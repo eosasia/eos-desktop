@@ -75,7 +75,14 @@ export class BrowserService {
       appName: 'Coin Market Cap',
       imageName: 'icons8-web-design-40.png',
       url: 'https://coinmarketcap.com'
+    },
+    {
+      appName: 'Prospectors',
+      imageName: 'icons8-web-design-40.png',
+      url: 'https://prospectors.io/'
     }
+
+
   ];
 
   constructor() { }
