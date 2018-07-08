@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {BrowserService} from '../services/browser.service';
 import {WindowManagerService} from '../services/window-manager.service';
 
 
@@ -9,6 +8,7 @@ import {WindowManagerService} from '../services/window-manager.service';
 })
 export class MenuBarComponent implements OnInit {
   time;
+  accountName = 'skalfgneodkl';
 
 
   constructor(private windowManagerService: WindowManagerService) {}
