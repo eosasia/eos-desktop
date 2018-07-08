@@ -32,12 +32,12 @@ export class BrowserService {
   private _openWindows: object[] = [];
   private _apps: object[] = [
     {
-      appName: 'EOS Zoom',
+      appName: 'Zoom Browser',
       imageName: 'icons8-globe-40.png',
       url: 'https://yahoo.com/'
     },
     {
-      appName: 'EOS P2P',
+      appName: 'P2P Messenger',
       imageName: 'icons8-chat-40.png',
       url: 'https://yahoo.com/'
     },
