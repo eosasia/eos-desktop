@@ -21,7 +21,6 @@ export class MenuBarComponent implements OnInit {
 
   toogleAccountSideBar() {
     this.windowManagerService.toggleAccountSideBar();
-    console.log(this.windowManagerService.accountInfoBarVisible);
   }
 
 }

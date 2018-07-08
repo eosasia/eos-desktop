@@ -1,12 +1,24 @@
 <div id="mySidenav" [ngClass]="{'sidenav': true, 'sidenav-open': sideBarVisibility}">
   <div id="user-side-bar" class="div-block-17">
     <div class="div-block-18">
-      <div><strong class="bold-text">gyzdcmbug4ge</strong></div>
-      <div class="text-block-7">Account Name</div>
+      <div><strong class="bold-text">{{accountInfo.accountName}}</strong></div>
+      <div>EOS Unstaked: {{ accountInfo.eosUnstaked }}</div>
+      <div>EOS Staked: {{accountInfo.eosStaked/10000 | number:'3.4-4'}}</div>
+      <div>Created: {{accountInfo.created | date: 'medium'}}</div>
     </div>
     <div class="div-block-19">
       <div class="div-block-20">
-        <div class="text-block-8">TOKENS</div>
+        <div class="text-block-8">EOS NETWORK TOKENS</div>
+      </div>
+      <div>
+        <div [ngStyle]="testStyle">Symbol</div>
+        <div [ngStyle]="testStyle">Amount</div>
+        <div [ngStyle]="testStyle">Value</div>
+      </div>
+      <div *ngFor="let currency of currencies">
+        <div [ngStyle]="testStyle">{{ currency.symbol }}</div>
+        <div [ngStyle]="testStyle">{{ currency.amount }}</div>
+        <div [ngStyle]="testStyle">{{ 0 | currency}}</div>
       </div>
     </div>
     <div class="div-block-19">

@@ -9,31 +9,32 @@ import {AppIconComponent} from './components/app-icon.component';
 import {BrowserService} from './services/browser.service';
 import {AccountSidebarManagerService} from './services/account-sidebar-manager.service';
 import {AccountSideBarComponent} from './components/account-sidebar.component';
-import { AngularDraggableModule } from 'angular2-draggable';
+import {AngularDraggableModule } from 'angular2-draggable';
 import {WindowHolderComponent} from './components/window-holder.component';
 import {WindowComponent} from './components/window.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MenuBarComponent,
-    SideBarComponent,
-    WebviewDirective,
-    AppIconComponent,
-    AccountSideBarComponent,
-    WindowHolderComponent,
-    WindowComponent
-  ],
-  imports: [
-    BrowserModule,
-    FontAwesomeModule,
-    AngularDraggableModule
-  ],
-  providers: [
-    BrowserService,
-    AccountSidebarManagerService
-  ],
-  bootstrap: [AppComponent]
+    imports: [
+      BrowserModule,
+      HttpClientModule,
+      FontAwesomeModule,
+      AngularDraggableModule,
+    ],
+    declarations: [
+      AppComponent,
+      MenuBarComponent,
+      SideBarComponent,
+      WebviewDirective,
+      AppIconComponent,
+      AccountSideBarComponent,
+      WindowHolderComponent,
+      WindowComponent
+    ],
+    providers: [
+      BrowserService
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

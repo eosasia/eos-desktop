@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BrowserService} from '../services/browser.service';
 
+
 @Component({
   selector: 'app-side-bar',
   templateUrl: '../templates/side-bar.component.html'
