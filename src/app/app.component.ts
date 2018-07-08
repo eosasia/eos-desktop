@@ -3,6 +3,7 @@ import {BrowserService} from './services/browser.service';
 import {WindowManagerService} from './services/window-manager.service';
 
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -23,5 +24,6 @@ export class AppComponent implements OnInit {
   closeWindow(windowIndex: number) {
     this.browserService.removeWindow(windowIndex);
   }
+
 
 }

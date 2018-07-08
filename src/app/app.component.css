@@ -11,8 +11,14 @@
   transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
   margin-top: 28px
 
+
+
 }
 
 .sidenav-open{
   width:300px
+}
+
+mwlResizable {
+  box-sizing: border-box;
 }
