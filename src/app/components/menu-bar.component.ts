@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {WindowManagerService} from '../services/window-manager.service';
+import {AccountSidebarManagerService} from '../services/account-sidebar-manager.service';
 
 
 @Component({
@@ -11,7 +11,7 @@ export class MenuBarComponent implements OnInit {
   accountName = 'skalfgneodkl';
 
 
-  constructor(private windowManagerService: WindowManagerService) {}
+  constructor(private windowManagerService: AccountSidebarManagerService) {}
 
   ngOnInit() {
     setInterval(() => {

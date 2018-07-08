@@ -1,5 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {WindowManagerService} from '../services/window-manager.service';
+import {AccountSidebarManagerService} from '../services/account-sidebar-manager.service';
 
 
 @Component({
@@ -11,7 +11,7 @@ export class AccountSideBarComponent implements OnInit {
 
   sideBarVisibility = false;
 
-  constructor(private windowManagerService: WindowManagerService) {}
+  constructor(private windowManagerService: AccountSidebarManagerService) {}
 
   ngOnInit() {
     this.windowManagerService.userSideBarSource.subscribe(value => {this.sideBarVisibility = value});

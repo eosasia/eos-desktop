@@ -5,7 +5,7 @@ import {Subject} from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class WindowManagerService {
+export class AccountSidebarManagerService {
 
   private _userSideBarSource: Subject<boolean> = new Subject();
   private _accountInfoBarVisible = false;

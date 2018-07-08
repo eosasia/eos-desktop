@@ -1,7 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {BrowserService} from './services/browser.service';
-import {WindowManagerService} from './services/window-manager.service';
-
 
 
 @Component({
@@ -11,13 +9,12 @@ import {WindowManagerService} from './services/window-manager.service';
 })
 export class AppComponent implements OnInit {
   url;
-  windows;
   sideBarVisibility = false;
+  windows;
 
-  constructor(private browserService: BrowserService, private windowManagerService: WindowManagerService) {}
+  constructor(private browserService: BrowserService) {}
 
   ngOnInit() {
-    this.url = this.browserService.currentUrl;
     this.windows = this.browserService.openWindows;
   }
 

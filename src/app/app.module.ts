@@ -7,9 +7,11 @@ import {SideBarComponent} from './components/side-bar.component';
 import {WebviewDirective} from './webview.directive';
 import {AppIconComponent} from './components/app-icon.component';
 import {BrowserService} from './services/browser.service';
-import {WindowManagerService} from './services/window-manager.service';
+import {AccountSidebarManagerService} from './services/account-sidebar-manager.service';
 import {AccountSideBarComponent} from './components/account-sidebar.component';
 import { AngularDraggableModule } from 'angular2-draggable';
+import {WindowHolderComponent} from './components/window-holder.component';
+import {WindowComponent} from './components/window.component';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { AngularDraggableModule } from 'angular2-draggable';
     WebviewDirective,
     AppIconComponent,
     AccountSideBarComponent,
-
+    WindowHolderComponent,
+    WindowComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,7 @@ import { AngularDraggableModule } from 'angular2-draggable';
   ],
   providers: [
     BrowserService,
-    WindowManagerService
+    AccountSidebarManagerService
   ],
   bootstrap: [AppComponent]
 })
