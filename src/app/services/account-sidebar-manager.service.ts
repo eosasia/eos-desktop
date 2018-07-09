@@ -15,6 +15,9 @@ export class AccountSidebarManagerService {
   private _accountInfoBarVisible = false;
   private _nodeUrl = 'https://api.eosnewyork.io';
   private _account = 'haytkojugage';
+
+  /** link to all tokens on the network */
+  /** https://docs.google.com/spreadsheets/d/10YwFRklMpu99OzqzUUVXhwP4SAytlUOje29WMgtUqe0/htmlview */
   private _knownCurrencies = [
     {
       symbol: 'KARMA',
