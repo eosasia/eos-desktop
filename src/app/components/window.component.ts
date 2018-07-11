@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {BrowserService} from '../services/browser.service';
+
 
 @Component({
   selector: 'app-window',

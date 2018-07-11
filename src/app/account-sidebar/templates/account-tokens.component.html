@@ -1,0 +1,19 @@
+<div class="div-block-19">
+  <div class="div-block-20">
+    <div class="text-block-8">EOS NETWORK TOKENS</div>
+  </div>
+  <div>
+    <div><b>Symbol</b></div>
+    <div><b>Amount</b></div>
+    <div><b>Value</b></div>
+  </div>
+</div>
+
+
+
+  <div *ngFor="let currency of currencies">
+    <div>{{ currency.symbol }}</div>
+    <div>{{ currency.amount }}</div>
+    <div>{{ 0 | currency}}</div>
+  </div>
+

@@ -1,0 +1,8 @@
+<div class="div-block-18">
+  <div>Account</div>
+  <div><strong class="bold-text">{{info.accountName}}</strong></div>
+  <div>EOS Unstaked: {{ info.eosUnstaked }}</div>
+  <div>EOS Staked: {{info.eosStaked/10000 | number:'3.4-4'}}</div>
+  <div>Created: {{info.created | date: 'medium'}}</div>
+</div>
+
