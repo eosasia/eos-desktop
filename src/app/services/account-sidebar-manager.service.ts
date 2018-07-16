@@ -14,7 +14,7 @@ export class AccountSidebarManagerService {
   private _userSideBarSource: Subject<boolean> = new Subject();
   private _accountInfoBarVisible = false;
   private _nodeUrl = 'https://api.eosnewyork.io';
-  private _account = 'haytkojugage';
+  private _account = 'eosdesktopio';
 
   /** link to all tokens on the network */
   /** https://docs.google.com/spreadsheets/d/10YwFRklMpu99OzqzUUVXhwP4SAytlUOje29WMgtUqe0/htmlview */

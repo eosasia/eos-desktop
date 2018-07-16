@@ -8,7 +8,7 @@ import {AccountSidebarManagerService} from '../services/account-sidebar-manager.
 })
 export class MenuBarComponent implements OnInit {
   time;
-  accountName = 'haytkojugage';
+  accountName = 'eosdesktopio';
 
 
   constructor(private windowManagerService: AccountSidebarManagerService) {}
