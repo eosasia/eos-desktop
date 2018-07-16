@@ -9,7 +9,12 @@ import {SidebarService} from '../services/sidebar.service';
 })
 export class AccountInfoComponent implements OnInit {
   public accountName: string;
-  public info = {};
+  public info = {
+    accountName: '',
+    created: '',
+    eosUnstaked: 0,
+    eosStaked: 0
+  };
 
   constructor(private accountSvc: AccountService, private sidebarSvc: SidebarService) {}
 
@@ -27,12 +32,10 @@ export class AccountInfoComponent implements OnInit {
 
   /** properly formats the account information */
   private formatAccountInfo(value: object) {
-    this.info = {
-      accountName: value['account_name'],
-      created: value['created'],
-      eosUnstaked: value['core_liquid_balance'].split(' ')[0],
-      eosStaked: value['voter_info']['staked']
-    };
+      this.info['accountName'] =  value['account_name'];
+      this.info['created']  = value['created'];
+      this.info['eosUnstaked']  = Number(value['core_liquid_balance'].split(' ')[0]);
+      this.info['eosStaked'] =  Number(value['voter_info']['staked']);
   }
 }
 

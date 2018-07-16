@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import {SidebarService} from '../services/sidebar.service';
-import {WindowManagerService} from '../../core/services/windowManager.service';
+import {WindowService} from '../../core/services/window.service';
 
 
 @Component({
@@ -11,7 +11,7 @@ import {WindowManagerService} from '../../core/services/windowManager.service';
 export class SidebarComponent implements OnInit {
   public sideBarVisibility = this.windowManagerSvc.sideBarVisible;
 
-  constructor(private sidebarSvc: SidebarService, private windowManagerSvc: WindowManagerService) {}
+  constructor(private sidebarSvc: SidebarService, private windowManagerSvc: WindowService) {}
 
   ngOnInit() {
 

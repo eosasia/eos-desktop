@@ -1,5 +1,7 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {BrowserService} from './core/services/browser.service';
+import {WindowService} from './core/services/window.service';
+import {ShortcutIconComponent} from './core/components/shortcut-icon.component';
 
 
 
@@ -9,19 +11,23 @@ import {BrowserService} from './core/services/browser.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  url;
-  sideBarVisibility = false;
-  windows;
 
-  constructor(private browserService: BrowserService) {}
+  public sideBarVisibility = false;
+  public windows;
+  public shortCutIcons;
+
+  @ViewChild('desktopWindow') window;
+
+  constructor(private browserSvc: BrowserService, private windowSvc: WindowService) {}
 
   ngOnInit() {
-    this.windows = this.browserService.openWindows;
+    this.windows = this.browserSvc.openWindows;
+    this.windowSvc.windowSize = { width: this.window.nativeElement.offsetWidth, height: this.window.nativeElement.offsetHeight };
+    this.shortCutIcons = this.browserSvc.windowShortcutApps;
   }
 
   closeWindow(windowIndex: number) {
-    this.browserService.removeWindow(windowIndex);
+    this.browserSvc.removeWindow(windowIndex);
   }
-
 
 }

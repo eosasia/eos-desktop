@@ -14,8 +14,8 @@ export class SidebarService {
   /** https://docs.google.com/spreadsheets/d/10YwFRklMpu99OzqzUUVXhwP4SAytlUOje29WMgtUqe0/htmlview */
   private _knownCurrencies = [
     {
-      symbol: 'EOS',
-      code: 'eosio.token'
+      'symbol': 'IQ',
+      'code': 'everipediaiq'
     },
     {
       symbol: 'KARMA',
@@ -36,6 +36,14 @@ export class SidebarService {
     {
       symbol: 'ATD',
       code: 'eosatidiumio'
+    },
+    {
+      symbol: 'POOR',
+      code: 'poormantoken'
+    },
+    {
+      symbol: 'CHL',
+      code: 'challengedac'
     }
 
   ];
@@ -46,6 +54,9 @@ export class SidebarService {
     return this.http.post(`${this.accountSvc.nodeUrl}/v1/chain/get_account`, {'account_name': this.accountSvc.eosAccountName});
   }
 
+
+
+  /** get all currency balances except EOS */
   getAccountCurrencies(): Observable<object[]> {
     const api = '/v1/chain/get_currency_balance';
     const account = this.accountSvc.eosAccountName;

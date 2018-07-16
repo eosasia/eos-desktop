@@ -22,9 +22,6 @@ import {WindowHolderComponent} from './components/window-holder.component';
 import {WindowComponent} from './components/window.component';
 
 
-
-
-
 @NgModule({
     imports: [
       BrowserModule,
@@ -32,7 +29,7 @@ import {WindowComponent} from './components/window.component';
       CoreModule,
       FontAwesomeModule,
       AngularDraggableModule,
-      AccountSideBarModule
+      AccountSideBarModule,
     ],
     declarations: [
       AppComponent,
