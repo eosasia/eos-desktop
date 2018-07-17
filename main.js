@@ -9,7 +9,12 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 1000, height: 1000,  title: "EOS Desktop",});
+  mainWindow = new BrowserWindow({
+    //width: 1000,
+    //height: 1000,
+    title: "EOS Desktop",});
+
+  mainWindow.setFullScreen(true);
 
   // and load the index.html of the app.
   const fileLocation = url.format({
@@ -17,9 +22,13 @@ function createWindow () {
     protocol:'file:'
   });
 
+
+
   mainWindow.loadURL(fileLocation);
   // Open the DevTools.
   // mainWindow.webContents.openDevTools();
+
+
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

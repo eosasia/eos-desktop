@@ -1,5 +1,5 @@
 import {Directive, ElementRef, Input, OnInit} from '@angular/core';
-import {BrowserService} from './services/browser.service';
+
 
 @Directive({
   selector: 'webview'

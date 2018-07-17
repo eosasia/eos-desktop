@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {BrowserService} from '../services/browser.service';
+import {BrowserService} from '../core/services/browser.service';
+
 
 
 @Component({
@@ -10,10 +11,10 @@ export class SideBarComponent implements OnInit {
 
   apps: object;
 
-  constructor(private browserService: BrowserService) {}
+  constructor(private browserSvc: BrowserService) {}
 
   ngOnInit() {
-    this.apps = this.browserService.apps;
+    this.apps = this.browserSvc.apps;
   }
 
 }

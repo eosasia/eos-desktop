@@ -1,5 +1,6 @@
 import {Component, ElementRef, Input, OnInit} from '@angular/core';
-import {BrowserService} from '../services/browser.service';
+import {BrowserService} from '../core/services/browser.service';
+
 
 @Component({
   selector: 'app-icon',

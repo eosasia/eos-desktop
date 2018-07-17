@@ -1,0 +1,35 @@
+<div id="resources" class="div-block-19 resources">
+  <div class="text-block-8">RESOURCES</div>
+  <div class="div-block-25">
+    <div class="div-block-24">
+      <div class="text-block-12"><strong>CPU</strong></div>
+      <div class="text-block-12">{{this.cpuInfo?.usedCPU}} ms / {{this.cpuInfo?.maxCPU}} sec</div>
+      <div class="text-block-12">{{this.cpuInfo?.percentageUsed}}%</div>
+    </div>
+    <div class="div-block-26 w-clearfix">
+      <div class="div-block-27" [ngStyle]="{'width': this.cpuInfo?.barWidth}"></div>
+    </div>
+    <div class="text-block-13" >(Staked: {{this.cpuInfo?.totalCPUStaked}} EOS)</div>
+  </div>
+  <div class="div-block-25">
+    <div class="div-block-24">
+      <div class="text-block-12"><strong>Bandwidth<br></strong></div>
+      <div class="text-block-12">{{this.bandwidthInfo?.usedBandwidth}} bytes / {{this.bandwidthInfo?.maxBandwidth}} MB</div>
+      <div class="text-block-12">{{this.bandwidthInfo?.percentageUsed}}%</div>
+    </div>
+    <div class="div-block-26 w-clearfix">
+      <div class="div-block-27" [ngStyle]="{'width': this.bandwidthInfo?.barWidth}"></div>
+    </div>
+    <div class="text-block-14">(Staked: {{this.bandwidthInfo?.totalBandwidthStaked}} EOS)</div>
+  </div>
+  <div class="div-block-25">
+    <div class="div-block-24">
+      <div class="text-block-12"><strong>Memory</strong></div>
+      <div class="text-block-12">3.87 KB / 7.96 KB</div>
+      <div class="text-block-12">0.000 %</div>
+    </div>
+    <div class="div-block-26 w-clearfix">
+      <div class="div-block-27"></div>
+    </div>
+  </div>
+</div>

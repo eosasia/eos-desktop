@@ -1,24 +1,22 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable, Subject} from 'rxjs';
 import {forkJoin} from 'rxjs/observable/forkJoin';
-
-
+import {AccountService} from '../../core/services/account.service';
+import {Observable} from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root',
 })
-export class AccountSidebarManagerService {
-
-  private _userSideBarSource: Subject<boolean> = new Subject();
-  private _accountInfoBarVisible = false;
-  private _nodeUrl = 'https://api.eosnewyork.io';
-  private _account = 'eosdesktopio';
+export class SidebarService {
 
   /** link to all tokens on the network */
   /** https://docs.google.com/spreadsheets/d/10YwFRklMpu99OzqzUUVXhwP4SAytlUOje29WMgtUqe0/htmlview */
   private _knownCurrencies = [
+    {
+      'symbol': 'IQ',
+      'code': 'everipediaiq'
+    },
     {
       symbol: 'KARMA',
       code: 'therealkarma'
@@ -38,32 +36,30 @@ export class AccountSidebarManagerService {
     {
       symbol: 'ATD',
       code: 'eosatidiumio'
+    },
+    {
+      symbol: 'POOR',
+      code: 'poormantoken'
+    },
+    {
+      symbol: 'CHL',
+      code: 'challengedac'
     }
 
   ];
 
-  constructor(private http: HttpClient) {}
-
-  get userSideBarSource(): Subject<boolean> {
-    return this._userSideBarSource;
-  }
-
-  toggleAccountSideBar(): void {
-    this._accountInfoBarVisible = !this._accountInfoBarVisible;
-    this._userSideBarSource.next(this._accountInfoBarVisible);
-  }
-
-  get accountInfoBarVisible(): boolean {
-    return this._accountInfoBarVisible;
-  }
+  constructor(private http: HttpClient, private accountSvc: AccountService) {}
 
   getAccountInfo(): Observable<object> {
-    return this.http.post(`${this._nodeUrl}/v1/chain/get_account`, {'account_name': this._account});
+    return this.http.post(`${this.accountSvc.nodeUrl}/v1/chain/get_account`, {'account_name': this.accountSvc.eosAccountName});
   }
 
+
+
+  /** get all currency balances except EOS */
   getAccountCurrencies(): Observable<object[]> {
     const api = '/v1/chain/get_currency_balance';
-    const account = this._account;
+    const account = this.accountSvc.eosAccountName;
     const currencyRequests = [];
 
     this._knownCurrencies.forEach((currency) => {
@@ -74,7 +70,7 @@ export class AccountSidebarManagerService {
       const currencyJson = JSON.stringify(currency);
 
       /** create currency request */
-      const request = this.http.post(`${this._nodeUrl}${api}`, currencyJson);
+      const request = this.http.post(`${this.accountSvc.nodeUrl}${api}`, currencyJson);
 
       /** push to currency request list */
       currencyRequests.push(request);
