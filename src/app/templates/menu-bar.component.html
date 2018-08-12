@@ -1,17 +1,17 @@
 <div class="div-block-4" [ngStyle]="{'z-index': '1000'}">
   <div class="div-block-12">
     <div class="div-block-13"><img src="assets/images/cryptocurrency_blockchain_crypto-14-512.png" width="20" height="20"></div>
-    <div>EOS Mainnet | {{accountName}}</div>
+    <div>EOS Mainnet | {{ accountName }}</div>
   </div>
   <div class="div-block-9">
     <div class="div-block-10">
-      <div class="text-block-3">{{time | date: 'medium'}}</div>
+      <div class="text-block-3">{{ time | date: 'medium' }}</div>
     </div>
     <div class="div-block-10">
       <div class="text-block-2">search</div>
     </div>
     <div class="div-block-10">
-      <div class="text-block-2"(click)="toogleAccountSideBar()">user</div>
+      <div class="text-block-2"(click)="toogleSideBar()">user</div>
     </div>
   </div>
 </div>

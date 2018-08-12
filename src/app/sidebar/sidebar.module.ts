@@ -22,4 +22,4 @@ import {SidebarService} from './services/sidebar.service';
     SidebarService
   ]
 })
-export class AccountSideBarModule { }
+export class SidebarModule { }

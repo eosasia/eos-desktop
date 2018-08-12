@@ -26,10 +26,10 @@
     <div class="div-block-24">
       <div class="text-block-12"><strong>Memory</strong></div>
       <div class="text-block-12">3.87 KB / 7.96 KB</div>
-      <div class="text-block-12">0.000 %</div>
+      <div class="text-block-12">{{this.ramInfo?.percentageUsed}}%</div>
     </div>
     <div class="div-block-26 w-clearfix">
-      <div class="div-block-27"></div>
+      <div class="div-block-27" [ngStyle]="{'width': this.ramInfo?.barWidth}"></div>
     </div>
   </div>
 </div>

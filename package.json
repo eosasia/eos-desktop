@@ -30,10 +30,14 @@
     "angular2-draggable": "^2.0.0-beta.2",
     "chart.js": "^2.7.2",
     "core-js": "^2.5.4",
+    "eosjs": "^16.0.0",
     "hoek": "^5.0.3",
     "nedb": "^1.8.0",
+    "ngx-electron": "^1.0.4",
     "rxjs": "^6.2.1",
     "rxjs-compat": "^6.2.1",
+    "scatter-js": "^2.1.0",
+    "stream": "0.0.2",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

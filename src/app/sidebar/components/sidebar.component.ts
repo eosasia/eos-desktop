@@ -5,8 +5,8 @@ import {WindowService} from '../../core/services/window.service';
 
 @Component({
   selector: 'app-account-sidebar',
-  templateUrl: '../templates/account-sidebar.component.html',
-  styleUrls: ['../styles/account-sidebar.component.css']
+  templateUrl: '../templates/sidebar.component.html',
+  styleUrls: ['../styles/sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
   public sideBarVisibility = this.windowManagerSvc.sideBarVisible;

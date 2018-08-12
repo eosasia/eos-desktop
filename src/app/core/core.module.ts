@@ -5,6 +5,7 @@ import {AccountService} from './services/account.service';
 import {WindowService} from './services/window.service';
 import {ShortcutIconComponent} from './components/shortcut-icon.component';
 import {DraggableDirective} from './directives/draggable.directive';
+import {ScatterService} from './services/scatter.service';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {DraggableDirective} from './directives/draggable.directive';
   providers:    [
     BrowserService,
     AccountService,
-    WindowService
+    WindowService,
+    ScatterService
   ]
 })
 export class CoreModule {

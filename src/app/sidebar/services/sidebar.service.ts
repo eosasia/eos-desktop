@@ -79,4 +79,16 @@ export class SidebarService {
     return forkJoin(currencyRequests);
   }
 
+  getTransactions(): Observable<object> {
+
+    const api = '/v1/history/get_actions';
+    const parameters = {
+      pos: -1,
+      offset: -20,
+      account_name: this.accountSvc.eosAccountName
+    };
+
+    return this.http.post(`${this.accountSvc.nodeUrl}${api}`, parameters);
+  }
+
 }

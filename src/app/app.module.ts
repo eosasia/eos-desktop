@@ -1,6 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
+import {NgxElectronModule} from 'ngx-electron';
 
 /* App Root */
 import {AppComponent} from './app.component';
@@ -8,7 +9,7 @@ import {AppComponent} from './app.component';
 
 /* Feature Modules */
 import {CoreModule} from './core/core.module';
-import {AccountSideBarModule} from './account-sidebar/account-sidebar.module';
+import {SidebarModule} from './sidebar/sidebar.module';
 
 // TODO DELETE AND UNINSTALL THIS AND CHECK THE ANGULAR.JSON FILE AS WELL
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
@@ -29,7 +30,8 @@ import {WindowComponent} from './components/window.component';
       CoreModule,
       FontAwesomeModule,
       AngularDraggableModule,
-      AccountSideBarModule,
+      SidebarModule,
+      NgxElectronModule
     ],
     declarations: [
       AppComponent,

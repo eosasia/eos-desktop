@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AccountService} from '../core/services/account.service';
-import {SidebarService} from '../account-sidebar/services/sidebar.service';
 import {WindowService} from '../core/services/window.service';
-
+import {ScatterService} from '../core/services/scatter.service';
 
 
 @Component({
@@ -14,18 +13,22 @@ export class MenuBarComponent implements OnInit {
   public accountName;
 
 
-  constructor(private windowManagerSvc: WindowService, private accountSvc: AccountService) {}
+  constructor(private windowSvc: WindowService, private accountSvc: AccountService, private scatterSvc: ScatterService) {}
 
   ngOnInit() {
     setInterval(() => {
       this.time = new Date();
     }, 1000);
 
-    this.accountName = this.accountSvc.eosAccountName;
+    /* set account name */
+    this.scatterSvc.identityStream
+      .subscribe(result => {
+        this.accountName = result;
+      });
   }
 
-  toogleAccountSideBar() {
-    this.windowManagerSvc.toggleAccountSideBar();
+  toogleSideBar() {
+    this.windowSvc.toggleAccountSideBar();
   }
 
 }
