@@ -23,7 +23,7 @@ export class AccountInfoComponent implements OnInit {
     // set basic account information
     this.scatterSvc.identityStream
       .subscribe(result => {
-        if (result) {
+        if (result['name'] !== 'anonymous') {
           this.sidebarSvc
             .getAccountInfo(result['accounts'][0]['name'])
             .subscribe(res => {
@@ -31,6 +31,7 @@ export class AccountInfoComponent implements OnInit {
               this._setEOSBalances(res);
             });
         }
+        this.accountName = 'No account available';
       });
   }
 

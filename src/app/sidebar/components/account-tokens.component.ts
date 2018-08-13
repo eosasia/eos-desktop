@@ -14,23 +14,20 @@ export class AccountTokensComponent implements OnInit {
   constructor(private sideBarSvc: SidebarService, private scatterSvc: ScatterService) {}
 
   ngOnInit() {
-
     this.scatterSvc.identityStream
       .subscribe(result => {
-        this.sideBarSvc
-          .getAccountCurrencies(result['accounts'][0]['name'])
-          .subscribe((res) => {
-            console.log(typeof res);
-            this._formatAndSetCurrencies(res);
-          });
+        if (result['name'] !== 'anonymous') {
+          this.sideBarSvc
+            .getAccountCurrencies(result['accounts'][0]['name'])
+            .subscribe((res) => {
+              this._formatAndSetCurrencies(res);
+            });
+        }
       });
-
   }
 
   private _formatAndSetCurrencies(list: any) {
-    console.log(list);
-
-    /** format each currency, comes like this: ["418.8393 KARMA"] */
+    /* format each currency, comes like this: ["418.8393 KARMA"] */
     list.forEach(value => {
       const splitValue = value[0].split(' ');
       const amount = Number(splitValue[0]);

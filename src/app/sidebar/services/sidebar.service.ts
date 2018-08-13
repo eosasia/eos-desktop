@@ -47,6 +47,14 @@ export class SidebarService {
     {
       symbol: 'CHL',
       code: 'challengedac'
+    },
+    {
+      symbol: 'BLACK',
+      code: 'eosblackteam'
+    },
+    {
+      symbol: 'WIZZ',
+      code: 'wizznetwork1'
     }
   ];
 

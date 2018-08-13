@@ -7,13 +7,11 @@ const Eosjs = require('eosjs');
 const ipc = require('electron').ipcMain;
 
 
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 let scatter = null;
 let eos = null;
-
 
 function createWindow () {
   // Create the browser window.
@@ -24,6 +22,7 @@ function createWindow () {
 
   // and load the index.html of the app.
   const fileLocation = url.format({
+    // TODO move dist folder to elctron/resources folder
     pathname:path.join(__dirname, 'dist', 'eos-desktop', 'index.html'),
     protocol:'file:'
   });
@@ -92,9 +91,7 @@ app.on('activate', function () {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 ipc.on('scatter', (event, arg) => {
-
   const requiredFields = {
-    personal:['firstname', 'lastname'],
     accounts:[
       { blockchain:'eos',
         chainId:'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906'
@@ -102,14 +99,22 @@ ipc.on('scatter', (event, arg) => {
     ]
   };
 
-  // what to do is scatter is rejected // TODO
-  scatter.getIdentity(requiredFields)
-    .then(identity => {
-      // console.log(identity);
-      event.sender.send('scatter', identity);
-    }).catch(error => {
-    event.sender.send('scatter', 'Hello Stranger!');
-  });
+  const anonymous = {name: 'anonymous'};
+
+  if (scatter) {
+    scatter.getIdentity(requiredFields)
+      .then(identity => {
+        // console.log(identity);
+        event.sender.send('scatter', identity);
+      }).catch(error => {
+      // send identity name as 'anonymous' to indicate that no identity available
+      event.sender.send('scatter', anonymous);
+    });
+  } else {
+    // send identity name as 'anonymous' to indicate that no identity available
+    event.sender.send('scatter', anonymous);
+  }
+
 
 });
 
