@@ -14,28 +14,6 @@ let mainWindow;
 let scatter = null;
 let eos = null;
 
-ipc.on('scatter', (event, arg) => {
-
-  const requiredFields = {
-    personal:['firstname', 'lastname'],
-    accounts:[
-      { blockchain:'eos',
-        chainId:'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906'
-      }
-      ]
-  };
-
-  // what to do is scatter is rejected // TODO
-  scatter.getIdentity(requiredFields)
-    .then(identity => {
-      // console.log(identity);
-      event.sender.send('scatter', identity);
-    }).catch(error => {
-    event.sender.send('scatter', 'Hello Stranger!');
-  });
-
-});
-
 
 function createWindow () {
   // Create the browser window.
@@ -113,6 +91,26 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+ipc.on('scatter', (event, arg) => {
 
+  const requiredFields = {
+    personal:['firstname', 'lastname'],
+    accounts:[
+      { blockchain:'eos',
+        chainId:'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906'
+      }
+    ]
+  };
+
+  // what to do is scatter is rejected // TODO
+  scatter.getIdentity(requiredFields)
+    .then(identity => {
+      // console.log(identity);
+      event.sender.send('scatter', identity);
+    }).catch(error => {
+    event.sender.send('scatter', 'Hello Stranger!');
+  });
+
+});
 
 
