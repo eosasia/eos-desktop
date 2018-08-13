@@ -11,32 +11,30 @@ const ipc = require('electron').ipcMain;
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
-let scatter;
-let eos;
+let scatter = null;
+let eos = null;
 
-ScatterJS.scatter
-  .connect('eosdesktopio')
-  .then(connected => {
-    if (connected) {
-      scatter = ScatterJS.scatter;
-      // console.log(scatter);
+ipc.on('scatter', (event, arg) => {
 
-      const network = {
-        protocol:'http', // Defaults to https
-        blockchain:'eos',
-        host:null, // ( or null if endorsed chainId )
-        port:null, // ( or null if defaulting to 80 )
-        chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906',
-      };
+  const requiredFields = {
+    personal:['firstname', 'lastname'],
+    accounts:[
+      { blockchain:'eos',
+        chainId:'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906'
+      }
+      ]
+  };
 
-      // Set up any extra options you want to use eosjs with.
-      const eosOptions = {};
-
-      // Get a reference to an 'Eosjs' instance with a Scatter signature provider.
-      eos = scatter.eos( network, Eosjs, eosOptions, 'https' );
-      eos.getBlock(1, (error, result) => {console.log(result)});
-    }
+  // what to do is scatter is rejected // TODO
+  scatter.getIdentity(requiredFields)
+    .then(identity => {
+      // console.log(identity);
+      event.sender.send('scatter', identity);
+    }).catch(error => {
+    event.sender.send('scatter', 'Hello Stranger!');
   });
+
+});
 
 
 function createWindow () {
@@ -63,6 +61,31 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   });
+
+  ScatterJS.scatter
+    .connect('eosdesktopio')
+    .then(connected => {
+      if (connected) {
+        scatter = ScatterJS.scatter;
+
+        const network = {
+          protocol:'https', // Defaults to https
+          blockchain:'eos',
+          host:'nodes.get-scatter.com', // ( or null if endorsed chainId )
+          port:443, // ( or null if defaulting to 80 )
+          chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906',
+        };
+
+        // Set up any extra options you want to use eosjs with.
+        const eosOptions = {};
+
+        // Get a reference to an 'Eosjs' instance with a Scatter signature provider.
+        eos = scatter.eos( network, Eosjs, eosOptions, 'https' );
+      }
+    });
+
+
+
 
 }
 
@@ -91,19 +114,5 @@ app.on('activate', function () {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-ipc.on('scatter', (event, arg) => {
 
-  if (scatter) {
-    scatter.getIdentity()
-      .then(identity => {
-        event.sender.send('scatter', identity['name']);
-      }).catch(error => {
-        event.sender.send('scatter', 'Hello Stranger!');
-      });
-
-  } else {
-    event.sender.send('scatter', 'Hello Stranger!');
-  }
-
-});
 

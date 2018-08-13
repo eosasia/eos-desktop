@@ -1,9 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {SidebarService} from '../services/sidebar.service';
 import {Currency} from '../types/currency';
-
-
-
+import {ScatterService} from '../../core/services/scatter.service';
 
 
 @Component({
@@ -13,54 +11,34 @@ import {Currency} from '../types/currency';
 export class AccountTokensComponent implements OnInit {
   public currencies: Currency[] = [];
 
-  constructor(private sideBarSvc: SidebarService) {}
+  constructor(private sideBarSvc: SidebarService, private scatterSvc: ScatterService) {}
 
   ngOnInit() {
-    this._getCurrencies();
-  }
 
-  /** get all currencies in account and push to this.currencies array */
-  private _getCurrencies() {
-    /** use getAccountInfo to get EOS staked and unstaked values */
-    this.sideBarSvc.getAccountInfo()
+    this.scatterSvc.identityStream
       .subscribe(result => {
-
-          /** reformat EOS balances into numbers  */
-          const liquidEOS = Number(result['core_liquid_balance'].split(' ')[0]);
-          const cpuStacked = Number(result['total_resources']['cpu_weight'].split(' ')[0]);
-          const netStaked = Number(result['total_resources']['net_weight'].split(' ')[0]);
-
-          /** add balances together */
-          const totalEOS = liquidEOS + cpuStacked + netStaked;
-
-          /** create new currency */
-          const eos = new Currency('EOS', totalEOS);
-
-          /** push to currencies array */
-          this.currencies.push(eos);
-
-        /** Now get all other known currencies and add to this.currencies array */
-        this._getAllNonEOSCurrencies();
-
+        this.sideBarSvc
+          .getAccountCurrencies(result['accounts'][0]['name'])
+          .subscribe((res) => {
+            console.log(typeof res);
+            this._formatAndSetCurrencies(res);
+          });
       });
+
   }
 
-  /** get all currencies in account and push to this.currencies */
-  private _getAllNonEOSCurrencies() {
-    this.sideBarSvc.getAccountCurrencies()
-      .subscribe(results => {
+  private _formatAndSetCurrencies(list: any) {
+    console.log(list);
 
-        /** format each currency, comes like this: ["418.8393 KARMA"] */
-        results.forEach(value => {
-          const splitValue = value[0].split(' ');
-          const amount = Number(splitValue[0]);
-          const symbol = splitValue[1];
-
-          const currency = new Currency(symbol, amount);
-
-          this.currencies.push(currency);
-        });
-      });
+    /** format each currency, comes like this: ["418.8393 KARMA"] */
+    list.forEach(value => {
+      const splitValue = value[0].split(' ');
+      const amount = Number(splitValue[0]);
+      const symbol = splitValue[1];
+      const currency = new Currency(symbol, amount);
+      this.currencies.push(currency);
+    });
   }
+
 
 }

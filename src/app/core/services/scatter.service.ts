@@ -22,7 +22,6 @@ export class ScatterService {
       this._electronSvc.ipcRenderer.send('scatter', 'hello');
 
       this._electronSvc.ipcRenderer.on('scatter', (event, data) => {
-        console.log(data);
         this.identity = data;
         this.identityStream.next(this.identity);
       });

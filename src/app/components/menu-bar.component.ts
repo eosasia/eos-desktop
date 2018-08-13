@@ -23,7 +23,7 @@ export class MenuBarComponent implements OnInit {
     /* set account name */
     this.scatterSvc.identityStream
       .subscribe(result => {
-        this.accountName = result;
+        this.accountName = result['name'];
       });
   }
 
