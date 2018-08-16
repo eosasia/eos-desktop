@@ -26,8 +26,8 @@ export class AccountInfoComponent implements OnInit {
         if (result['name'] !== 'anonymous') {
           this.sidebarSvc
             .getAccountInfo(result['accounts'][0]['name'])
-            .subscribe(res => {
-              this.accountName = res['account_name'];
+            .subscribe((res: AccountInfoInterface) => {
+              this.accountName = res.account_name;
               this._setEOSBalances(res);
             });
         }
@@ -36,14 +36,14 @@ export class AccountInfoComponent implements OnInit {
   }
 
   // formats and set EOS Balances
-  private _setEOSBalances(accountInfo: object) {
+  private _setEOSBalances(accountInfo: AccountInfoInterface) {
     // calculate total staked EOS
-    const cpuStaked = parseFloat(accountInfo['total_resources']['cpu_weight'].split(' ')[0]);
-    const netStaked = parseFloat(accountInfo['total_resources']['net_weight'].split(' ')[0]);
+    const cpuStaked = parseFloat(accountInfo.total_resources.cpu_weight.split(' ')[0]);
+    const netStaked = parseFloat(accountInfo.total_resources.net_weight.split(' ')[0]);
     this.stakedEOS = cpuStaked + netStaked;
 
     // calculate total unstaked EOS
-    this.unstakedEOS = parseFloat(accountInfo['core_liquid_balance'].split(' ')[0]);
+    this.unstakedEOS = parseFloat(accountInfo.core_liquid_balance.split(' ')[0]);
 
     // calculate total EOS
     this.totalEOS = this.stakedEOS + this.unstakedEOS;

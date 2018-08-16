@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {SidebarService} from '../services/sidebar.service';
 import {Ram} from '../types/ram';
 import {Bandwidth} from '../types/bandwidth';
-import {CPU} from '../types/cpu';
+import {CPU} from '../types/CPU';
+import {ScatterService} from '../../core/services/scatter.service';
 
 
 @Component({
@@ -14,26 +15,21 @@ export class AccountResourcesComponent implements OnInit {
   public bandwidthInfo: Bandwidth;
   public ramInfo: Ram;
 
-  constructor(private sidebarSvc: SidebarService) {}
+  constructor(private sidebarSvc: SidebarService, private scatterSvc: ScatterService) {}
 
   ngOnInit() {
-    this._getAccountInfo();
-  }
+    this.scatterSvc.identityStream
+      .subscribe(result => {
+        if (result['name'] !== 'anonymous') {
+          this.sidebarSvc
+            .getAccountInfo(result['accounts'][0]['name'])
+            .subscribe((res: AccountInfoInterface) => {
+              this.cpuInfo = new CPU(res.cpu_limit, res.total_resources.cpu_weight);
+              this.cpuInfo.toString();
 
-  /** get account info which includes resources stats */
-  private _getAccountInfo() {
-    // this.sidebarSvc.getAccountInfo()
-    //   .subscribe(result => {
-    //     /** set CPU resources */
-    //     this.cpuInfo = new CPU(result['cpu_limit'], result['cpu_weight']);
-    //
-    //     /** set Bandwidth resources */
-    //     this.bandwidthInfo = new Bandwidth(result['net_limit'], result['net_weight']);
-    //
-    //     /** set RAM resources */
-    //     this.ramInfo = new Ram(result['ram_quota'], result['ram_usage']);
-    //     console.log(result);
-    //   });
+              console.log('Net_Limit ', JSON.stringify(res.net_limit));
+            });
+        }
+      });
   }
-
 }

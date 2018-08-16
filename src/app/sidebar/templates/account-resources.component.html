@@ -3,13 +3,13 @@
   <div class="div-block-25">
     <div class="div-block-24">
       <div class="text-block-12"><strong>CPU</strong></div>
-      <div class="text-block-12">{{this.cpuInfo?.usedCPU}} ms / {{this.cpuInfo?.maxCPU}} sec</div>
-      <div class="text-block-12">{{this.cpuInfo?.percentageUsed}}%</div>
+      <div class="text-block-12">{{ this.cpuInfo?.usedCPU }} / {{ this.cpuInfo?.maxCPU }}</div>
+      <div class="text-block-12">{{ this.cpuInfo?.percentageUsed }}</div>
     </div>
     <div class="div-block-26 w-clearfix">
-      <div class="div-block-27" [ngStyle]="{'width': this.cpuInfo?.barWidth}"></div>
+      <div class="div-block-27" [ngStyle]="{ 'width': this.cpuInfo?.barWidth }"></div>
     </div>
-    <div class="text-block-13" >(Staked: {{this.cpuInfo?.totalCPUStaked}} EOS)</div>
+    <div class="text-block-13" >(Staked: {{ this.cpuInfo?.stakedEOS }})</div>
   </div>
   <div class="div-block-25">
     <div class="div-block-24">
