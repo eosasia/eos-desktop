@@ -1,3 +1,4 @@
+// TODO fix all getters and setters
 export class CPU {
   private _maxCPU: number;
   private _usedCPU: number;
@@ -17,13 +18,13 @@ export class CPU {
 
   public toString() {
     console.log(`
-    CPU Details:
-    Max CPU: ${this._maxCPU}
-    Used CPU: ${this._usedCPU}
-    Available CPU: ${this._availableCPU}
-    Percentage Used: ${this._percentageUsed}
-    Staked EOS: ${this._stakedEOS}
-    Bar Width: ${this._barWidth}
+      CPU Details:
+      Max CPU: ${this._maxCPU}
+      Used CPU: ${this._usedCPU}
+      Available CPU: ${this._availableCPU}
+      Percentage Used: ${this._percentageUsed}
+      Staked EOS: ${this._stakedEOS}
+      Bar Width: ${this._barWidth}
     `);
   }
 

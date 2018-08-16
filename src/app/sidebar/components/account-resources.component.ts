@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {SidebarService} from '../services/sidebar.service';
-import {Ram} from '../types/ram';
-import {Bandwidth} from '../types/bandwidth';
 import {CPU} from '../types/CPU';
+import {Bandwidth} from '../types/Bandwidth';
+import {RAM} from '../types/RAM';
 import {ScatterService} from '../../core/services/scatter.service';
 
 
@@ -13,7 +13,7 @@ import {ScatterService} from '../../core/services/scatter.service';
 export class AccountResourcesComponent implements OnInit {
   public cpuInfo: CPU;
   public bandwidthInfo: Bandwidth;
-  public ramInfo: Ram;
+  public ramInfo: RAM;
 
   constructor(private sidebarSvc: SidebarService, private scatterSvc: ScatterService) {}
 
@@ -26,8 +26,10 @@ export class AccountResourcesComponent implements OnInit {
             .subscribe((res: AccountInfoInterface) => {
               this.cpuInfo = new CPU(res.cpu_limit, res.total_resources.cpu_weight);
               this.cpuInfo.toString();
-
-              console.log('Net_Limit ', JSON.stringify(res.net_limit));
+              this.bandwidthInfo = new Bandwidth(res.net_limit, res.total_resources.net_weight);
+              this.bandwidthInfo.toString();
+              this.ramInfo = new RAM(res.ram_quota, res.ram_usage);
+              this.ramInfo.toString();
             });
         }
       });
