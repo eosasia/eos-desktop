@@ -1,3 +1,4 @@
+// TODO change name to Token instead of Currencies
 export class Currency {
   public symbol: string;
   public amount: number;

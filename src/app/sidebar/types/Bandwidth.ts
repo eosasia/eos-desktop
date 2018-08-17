@@ -1,4 +1,5 @@
 // TODO fix all getters and setters
+// TODO check all percentage formulas
 export class Bandwidth {
 
   private _maxBandwidth: number;
@@ -12,7 +13,7 @@ export class Bandwidth {
     this._maxBandwidth = info.max;
     this.usedBandwidth = info.used;
     this.availableBandwidth = info.available;
-    this.percentageUsed = ((info.used / info.max) / 100).toFixed(2);
+    this.percentageUsed = ((info.used / info.max) * 100).toFixed(2);
     this.stakedEOS = stakedEOS;
     this.barWidth = this._percentageUsed;
   }
@@ -32,7 +33,7 @@ export class Bandwidth {
   // returns bandwidth in megabytes
   // need to fix this formula it is incorrect
   get maxBandwidth(): string {
-    return (this._maxBandwidth / 1000000).toFixed(2);
+    return (this._maxBandwidth / 1048576).toFixed(2);
   }
 
   // TODO format for kilo and megabytes depending on size

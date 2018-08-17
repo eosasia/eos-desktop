@@ -1,8 +1,13 @@
 import { Injectable } from '@angular/core';
 import {ElectronService} from 'ngx-electron';
 import {Subject} from 'rxjs';
+import {platformBrowser} from '@angular/platform-browser';
 
+interface Window {
+  scatter: any;
+}
 
+declare var window: Window;
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +18,8 @@ export class ScatterService {
   public eos: any;
   private _identity: string;
   private _identityStream: Subject<string> = new Subject();
+
+
 
   constructor(private _electronSvc: ElectronService) {}
 
@@ -25,6 +32,35 @@ export class ScatterService {
         this.identity = data;
         this.identityStream.next(this.identity);
       });
+    }
+
+    if (platformBrowser) {
+
+      document.addEventListener('scatterLoaded', () => {
+        this.scatter = window.scatter;
+
+        this.asyncExample();
+
+      });
+    }
+  }
+
+  async asyncExample() {
+    const requiredFields = {
+      accounts: [
+        {
+          blockchain: 'eos',
+          chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906'
+        }
+      ]
+    };
+    try {
+      this.identity = await this.scatter.getIdentity(requiredFields);
+      this.identityStream.next(this.identity);
+    } catch (err) {
+      const anonymous = {name: 'anonymous'};
+      this.identityStream.next('anonymous');
+
     }
   }
 

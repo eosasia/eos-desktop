@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class AccountService {
 
   private _eosAccountName = '';
-  private _nodeUrl = 'https://api.eosnewyork.io';
+  private _nodeUrl = 'https://nodes.get-scatter.com';
 
   set eosAccountName(value: string) {
     this._eosAccountName = value;

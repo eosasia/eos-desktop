@@ -3,7 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {forkJoin} from 'rxjs/observable/forkJoin';
 import {AccountService} from '../../core/services/account.service';
 import {Observable} from 'rxjs';
-
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/of';
 
 @Injectable({
   providedIn: 'root',
@@ -79,7 +80,7 @@ export class SidebarService {
       const currencyJson = JSON.stringify(currency);
 
       /* create currency request */
-      const request = this.http.post(`${this.accountSvc.nodeUrl}${api}`, currencyJson);
+      const request = this.http.post(`${this.accountSvc.nodeUrl}${api}`, currencyJson).catch(res => Observable.of(res));
 
       /* push to currency request list */
       currencyRequests.push(request);

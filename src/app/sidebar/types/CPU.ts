@@ -1,4 +1,5 @@
 // TODO fix all getters and setters
+// TODO check all percentage formulas
 export class CPU {
   private _maxCPU: number;
   private _usedCPU: number;
@@ -11,7 +12,7 @@ export class CPU {
     this._maxCPU = info.max;
     this._usedCPU = info.used;
     this._availableCPU = info.available;
-    this.percentageUsed = ((info.used / info.max) / 100).toFixed(2);
+    this.percentageUsed = ((info.used / info.max) * 100).toFixed(2);
     this._stakedEOS = stakedEOS;
     this.barWidth = this._percentageUsed;
   }

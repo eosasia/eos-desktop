@@ -1,4 +1,5 @@
-// TODO fix all getters and setterss
+// TODO fix all getters and setters
+// TODO check all percentage formulas
 export class RAM {
 
 

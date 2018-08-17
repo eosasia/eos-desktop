@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {SidebarService} from '../services/sidebar.service';
-import {Currency} from '../types/currency';
+import {Currency} from '../types/Currency';
 import {ScatterService} from '../../core/services/scatter.service';
 
 
@@ -17,9 +17,11 @@ export class AccountTokensComponent implements OnInit {
     this.scatterSvc.identityStream
       .subscribe(result => {
         if (result['name'] !== 'anonymous') {
+          const account_name = result['accounts'][0]['name'];
           this.sideBarSvc
-            .getAccountCurrencies(result['accounts'][0]['name'])
-            .subscribe((res) => {
+            .getAccountCurrencies(account_name)
+            .subscribe((res: object[]) => {
+              // TODO type the response to be a list of Tokens res: Tokens[]
               this._formatAndSetCurrencies(res);
             });
         }

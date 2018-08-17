@@ -3,6 +3,8 @@ import {BrowserService} from './core/services/browser.service';
 import {WindowService} from './core/services/window.service';
 import {ShortcutIconComponent} from './core/components/shortcut-icon.component';
 import {ScatterService} from './core/services/scatter.service';
+import ScatterJS from 'scatter-js/dist/scatter.esm';
+import {platformBrowser} from '@angular/platform-browser';
 
 
 
@@ -26,6 +28,7 @@ export class AppComponent implements OnInit {
     this.windowSvc.windowSize = { width: this.window.nativeElement.offsetWidth, height: this.window.nativeElement.offsetHeight };
     this.shortCutIcons = this.browserSvc.windowShortcutApps;
     this.scatterSvc.connectToScatter();
+
   }
 
   private closeWindow(windowIndex: number) {
