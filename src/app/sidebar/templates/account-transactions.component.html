@@ -2,5 +2,10 @@
   <div class="div-block-20">
     <div class="text-block-8">RECENT TRANSACTIONS</div>
   </div>
-  <div *ngFor="let action of transactions">{{action.from}}</div>
+  <div *ngFor="let action of actions">
+    {{ action.actionName }}
+    {{ action.time }}
+    {{action.data}}
+    {{action.actionName}}
+  </div>
 </div>

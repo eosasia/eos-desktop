@@ -7,9 +7,9 @@
   </div>
 
   <!-- TODO format so that currencies are scrollable -->
-  <div class="div-block-20" *ngFor="let currency of currencies">
-    <div class="text-block-10">{{ currency.symbol }}</div>
-    <div class="text-block-10">{{ currency.amount }}</div>
-    <div class="text-block-10">{{ 0 | currency}}</div>
+  <div class="div-block-20" *ngFor="let token of tokens">
+    <div class="text-block-10">{{ token.symbol }}</div>
+    <div class="text-block-10">{{ token.amount }}</div>
+    <div class="text-block-10">{{ token.value | currency}}</div>
   </div>
 </div>

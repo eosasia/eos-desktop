@@ -1,5 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {SidebarService} from '../services/sidebar.service';
+import {ScatterService} from '../../core/services/scatter.service';
+import {Action} from '../types/Action';
+import {GetActionInterface} from '../types/interfaces/GetActionInterface';
+
 
 class Transaction {
   public from: string;
@@ -40,21 +44,29 @@ class Transaction {
   templateUrl: '../templates/account-transactions.component.html'
 })
 export class AccountTransactionsComponent implements OnInit {
-  @Input() info: any;
-  transactions: Transaction[] =[];
 
-  constructor(private sidebarSvc: SidebarService) {}
+  actions: Action[] = [];
+
+  constructor(private sidebarSvc: SidebarService, private scatterSvc: ScatterService) {}
 
   ngOnInit() {
-    this.sidebarSvc
-      .getTransactions()
+    this.scatterSvc.identityStream
       .subscribe(result => {
-
-        result['actions'].forEach(action => {
-          this.transactions.push(new Transaction(action));
-        });
-
+        if (result['name'] !== 'anonymous') {
+          const account_name = result['accounts'][0]['name'];
+          this.sidebarSvc
+            .getTransactions(account_name)
+            .subscribe((res: GetActionInterface) => {
+              res.actions.forEach(item => {
+                const action = new Action(item);
+                this.actions.push(action);
+              });
+            });
+        }
       });
+
+
+
   }
 
 }
