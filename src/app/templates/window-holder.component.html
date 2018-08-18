@@ -1,11 +1,11 @@
 <div>
-<div class="div-block-11" *ngFor="let window of windows; let i = index" [ngStyle]="{'z-index': i, 'resize':'both', 'overflow': 'auto', 'position': 'absolute'}" ngDraggable ngResizable [rzHandles]="'n,e,s,w,se,sw,ne,nw'" [handle]="Header">
-  <div id="browser-header" class="div-block-14 w-clearfix" #Header>
-    <img src="assets/images/icons8-delete-16.png" (click)="closeWindow(i)" width="14" height="14" class="image-2">
-    <div class="div-block-16">
-      <div class="text-block-6">{{window.appName}}</div>
+  <div class="div-block-11" *ngFor="let window of windows; let i = index" [ngStyle]="{'z-index': i, 'resize':'both', 'overflow': 'auto', 'position': 'absolute'}" ngDraggable ngResizable [rzHandles]="'n,e,s,w,se,sw,ne,nw'" [handle]="Header">
+    <div id="browser-header" class="div-block-14 w-clearfix" #Header>
+      <img src="assets/images/icons8-delete-16.png" (click)="closeWindow(i)" width="14" height="14" class="image-2">
+      <div class="div-block-16">
+        <div class="text-block-6">{{window.appName}}</div>
+      </div>
     </div>
+    <webview  [url]=window.url style="display:inline-flex; width:100%; height:100%"></webview>
   </div>
-  <webview  [url]=window.url style="display:inline-flex; width:100%; height:100%"></webview>
-</div>
 </div>

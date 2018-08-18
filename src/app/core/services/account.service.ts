@@ -4,6 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AccountService {
+
+  private _eosAccountName = '';
+  private _nodeUrl = 'https://nodes.get-scatter.com';
+
+  set eosAccountName(value: string) {
+    this._eosAccountName = value;
+  }
   get eosAccountName(): string {
     return this._eosAccountName;
   }
@@ -11,6 +18,5 @@ export class AccountService {
   get nodeUrl(): string {
     return this._nodeUrl;
   }
-  private _eosAccountName = 'haytkojugage';
-  private _nodeUrl = 'https://api.eosnewyork.io';
+
 }

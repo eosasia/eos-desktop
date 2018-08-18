@@ -1,0 +1,37 @@
+<!-- TODO add change color of bar graph based on percentage of resource used green, yellow, red -->
+<!-- TODO make resources bar skinnier-->
+<div id="resources" class="div-block-19 resources">
+  <div class="text-block-8">RESOURCES</div>
+  <div class="div-block-25">
+    <div class="div-block-24">
+      <div class="text-block-12"><strong>CPU</strong></div>
+      <div class="text-block-12">{{ this.cpuInfo?.usedCPU }} / {{ this.cpuInfo?.maxCPU }}</div>
+      <div class="text-block-12">{{ this.cpuInfo?.percentageUsed }}</div>
+    </div>
+    <div class="div-block-26 w-clearfix">
+      <div class="div-block-27" [ngStyle]="{ 'width': this.cpuInfo?.barWidth }"></div>
+    </div>
+    <div class="text-block-13" >(Staked: {{ this.cpuInfo?.stakedEOS }})</div>
+  </div>
+  <div class="div-block-25">
+    <div class="div-block-24">
+      <div class="text-block-12"><strong>NET<br></strong></div>
+      <div class="text-block-12">{{this.bandwidthInfo?.usedBandwidth}} bytes / {{this.bandwidthInfo?.maxBandwidth}} MB</div>
+      <div class="text-block-12">{{this.bandwidthInfo?.percentageUsed}}</div>
+    </div>
+    <div class="div-block-26 w-clearfix">
+      <div class="div-block-27" [ngStyle]="{'width': this.bandwidthInfo?.barWidth}"></div>
+    </div>
+    <div class="text-block-14">(Staked: {{this.bandwidthInfo?.stakedEOS}})</div>
+  </div>
+  <div class="div-block-25">
+    <div class="div-block-24">
+      <div class="text-block-12"><strong>Memory</strong></div>
+      <div class="text-block-12">{{ this.ramInfo?.ram_usage }} / {{ this.ramInfo?.ram_quota }} </div>
+      <div class="text-block-12">{{this.ramInfo?.percentageUsed}}%</div>
+    </div>
+    <div class="div-block-26 w-clearfix">
+      <div class="div-block-27" [ngStyle]="{ 'width': this.ramInfo?.barWidth }"></div>
+    </div>
+  </div>
+</div>

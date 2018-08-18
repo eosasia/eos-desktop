@@ -6,6 +6,8 @@ import { Injectable } from '@angular/core';
 export class BrowserService {
   private _currentUrl = 'https://eos.feexplorer.io/';
   private _openWindows: object[] = [];
+  // Create JSON FILE FOR THIS STUFF
+  // TODO
   private _apps: object[] = [
     {
       appName: 'Zoom Browser',
@@ -91,12 +93,42 @@ export class BrowserService {
     {
       appName: 'EOS Tracker',
       imageName: 'icons8-globe-40.png',
-      url: 'https://eostracker.io/accounts/haytkojugage'
+      url: 'https://eostracker.io/'
     },
     {
       appName: 'EOS Air Drops Goggle Docs',
       imageName: 'icons8-globe-40.png',
       url: 'https://docs.google.com/spreadsheets/d/10YwFRklMpu99OzqzUUVXhwP4SAytlUOje29WMgtUqe0/htmlview'
+    },
+    {
+      appName: 'All Things EOS',
+      imageName: 'icons8-globe-40.png',
+      url: 'http://allthingseos.com/'
+    },
+    {
+      appName: 'How to Use EOS.js',
+      imageName: 'icons8-globe-40.png',
+      url: 'https://medium.com/coinmonks/how-to-use-eosjs-api-1-770b037b22ad'
+    },
+    {
+      appName: 'Icon Set',
+      imageName: 'icons8-globe-40.png',
+      url: 'https://icons8.com/icon/set/web/office'
+    },
+    {
+      appName: 'Bloks.io',
+      imageName: 'icons8-globe-40.png',
+      url: 'https://bloks.io/'
+    },
+    {
+      appName: 'EOS Tool Kit',
+      imageName: 'icons8-globe-40.png',
+      url: 'https://eostoolkit.io/home'
+    },
+    {
+      appName: 'EOS Resource Planner',
+      imageName: 'icons8-globe-40.png',
+      url: 'https://www.eosrp.io/'
     }
   ];
 
