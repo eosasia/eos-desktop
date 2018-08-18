@@ -1,15 +1,15 @@
 <div id="tokens" class="div-block-19">
   <div class="text-block-8">EOS NETWORK TOKENS</div>
-  <div class="div-block-20">
+  <div class="div-block-20 title">
     <div class="text-block-9">Symbol</div>
     <div class="text-block-9">Amount</div>
     <div class="text-block-9">Value</div>
   </div>
-
-  <!-- TODO format so that currencies are scrollable -->
-  <div class="div-block-20" *ngFor="let token of tokens">
-    <div class="text-block-10">{{ token.symbol }}</div>
-    <div class="text-block-10">{{ token.amount }}</div>
-    <div class="text-block-10">{{ token.value | currency}}</div>
+  <div class="div-block-30">
+    <div class="div-block-20" *ngFor="let token of tokens">
+      <div class="text-block-10">{{ token.symbol }}</div>
+      <div class="text-block-10">{{ token.amount }}</div>
+      <div class="text-block-10">{{ token.value | currency}}</div>
+    </div>
   </div>
 </div>

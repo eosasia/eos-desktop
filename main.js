@@ -5,6 +5,8 @@ const url = require('url');
 const ScatterJS = require('scatter-js/dist/scatter.cjs');
 const Eosjs = require('eosjs');
 const ipc = require('electron').ipcMain;
+const shell = require('electron').shell;
+
 
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -119,3 +121,6 @@ ipc.on('scatter', (event, arg) => {
 });
 
 
+ipc.on('external-page', (event, arg) => {
+  shell.openExternal(arg);
+});

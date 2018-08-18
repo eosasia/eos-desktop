@@ -39,13 +39,13 @@ export class ScatterService {
       document.addEventListener('scatterLoaded', () => {
         this.scatter = window.scatter;
 
-        this.asyncExample();
+        this.getIdentityBrowser();
 
       });
     }
   }
 
-  async asyncExample() {
+  async getIdentityBrowser() {
     const requiredFields = {
       accounts: [
         {

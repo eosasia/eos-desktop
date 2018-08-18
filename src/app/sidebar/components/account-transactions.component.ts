@@ -3,40 +3,8 @@ import {SidebarService} from '../services/sidebar.service';
 import {ScatterService} from '../../core/services/scatter.service';
 import {Action} from '../types/Action';
 import {GetActionInterface} from '../types/interfaces/GetActionInterface';
-
-
-class Transaction {
-  public from: string;
-  public type: string;
-
-  constructor(action) {
-    this.type = action['action_trace']['act']['name'];
-    // console.log(action['action_trace']['act']);
-  }
-
-  /** use switch statment to format transaction based on its type */
-  private _setTransactionsType() {
-    // switch(expression) {
-    //   case 'transfer':
-    //     // code block
-    //     break;
-    //   case 'newaccount':
-    //     // code block
-    //     break;
-    //   case 'newaccount':
-    //     // code block
-    //     break;
-    //   case 'newaccount':
-    //     // code block
-    //     break;
-    //   case 'newaccount':
-    //     // code block
-    //     break;
-    //   default:
-    //     // code block
-  }
-
-}
+import {ElectronService} from 'ngx-electron';
+import {platformBrowser} from '@angular/platform-browser';
 
 
 @Component({
@@ -47,7 +15,7 @@ export class AccountTransactionsComponent implements OnInit {
 
   actions: Action[] = [];
 
-  constructor(private sidebarSvc: SidebarService, private scatterSvc: ScatterService) {}
+  constructor(private sidebarSvc: SidebarService, private scatterSvc: ScatterService, private _electronSvc: ElectronService) {}
 
   ngOnInit() {
     this.scatterSvc.identityStream
@@ -59,13 +27,24 @@ export class AccountTransactionsComponent implements OnInit {
             .subscribe((res: GetActionInterface) => {
               res.actions.forEach(item => {
                 const action = new Action(item);
+                action.toString();
                 this.actions.push(action);
               });
             });
         }
       });
+  }
 
+  public openWebPage(transaction: string) {
+    const url = 'https://eosflare.io/tx/' + transaction;
 
+    if (this._electronSvc.isElectronApp) {
+      this._electronSvc.ipcRenderer.send('external-page', url);
+    }
+
+    if (platformBrowser) {
+      window.open(url, '_blank');
+    }
 
   }
 
