@@ -6,7 +6,6 @@ import {NgxElectronModule} from 'ngx-electron';
 /* App Root */
 import {AppComponent} from './app.component';
 
-
 /* Feature Modules */
 import {CoreModule} from './core/core.module';
 import {SidebarModule} from './sidebar/sidebar.module';
@@ -21,6 +20,7 @@ import {AppIconComponent} from './components/app-icon.component';
 import {AngularDraggableModule } from 'angular2-draggable';
 import {WindowHolderComponent} from './components/window-holder.component';
 import {WindowComponent} from './components/window.component';
+
 
 
 @NgModule({
