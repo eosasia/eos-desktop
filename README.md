@@ -17,9 +17,12 @@ EOS Desktop uses Scatter Desktop to load your account details.
 EOS Desktop never has access to your private keys, and at this stage in development only asks for you identity. 
 It does not perform any EOS network operations on your accounts. 
 
+
+
 ## Get Started
 Clone the Repository and run `npm install` and `npm run electron-build` to start the application. Maximize window for best user experience. 
 
 
-
+## Releases
+Pre Alpha Release coming soon....
 
