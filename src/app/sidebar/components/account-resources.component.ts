@@ -25,11 +25,8 @@ export class AccountResourcesComponent implements OnInit {
             .getAccountInfo(result['accounts'][0]['name'])
             .subscribe((res: AccountInfoInterface) => {
               this.cpuInfo = new CPU(res.cpu_limit, res.total_resources.cpu_weight);
-              this.cpuInfo.toString();
               this.bandwidthInfo = new Bandwidth(res.net_limit, res.total_resources.net_weight);
-              this.bandwidthInfo.toString();
               this.ramInfo = new RAM(res.ram_quota, res.ram_usage);
-              this.ramInfo.toString();
             });
         }
       });

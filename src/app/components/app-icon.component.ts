@@ -1,5 +1,5 @@
 import {Component, ElementRef, Input, OnInit} from '@angular/core';
-import {BrowserService} from '../core/services/browser.service';
+import {WindowsService} from '../windows/services/windows.services';
 
 
 @Component({
@@ -9,7 +9,9 @@ import {BrowserService} from '../core/services/browser.service';
 export class AppIconComponent implements OnInit {
   @Input() info: any;
 
-  constructor(private browserService: BrowserService) {
+
+
+  constructor(private windowsSvc: WindowsService) {
 
   }
 
@@ -17,9 +19,9 @@ export class AppIconComponent implements OnInit {
 
   }
 
+  // todo add prevent event default on doubleclick() or click
   openWindow() {
-    console.log(this.info);
-    this.browserService.addWindow(this.info);
+    this.windowsSvc.addWindow(this.info);
   }
 
 }

@@ -1,6 +1,6 @@
-import {Component, ElementRef, HostListener, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit} from '@angular/core';
+import {WindowsService} from '../../windows/services/windows.services';
 import {WindowService} from '../services/window.service';
-import {BrowserService} from '../services/browser.service';
 
 @Component({
   selector: 'app-shortcut-icon',
@@ -11,7 +11,7 @@ export class ShortcutIconComponent implements OnInit {
   leftDistance: string;
   @Input() info: any;
 
-  constructor(private el: ElementRef, private windowSvc: WindowService, private browserSvc: BrowserService) {}
+  constructor(private el: ElementRef, private windowsSvc: WindowsService, private windowSvc: WindowService) {}
 
   ngOnInit() {
     this._setIconPosition();
@@ -26,8 +26,7 @@ export class ShortcutIconComponent implements OnInit {
   }
 
   openWindow() {
-    console.log(this.info);
-    this.browserSvc.addWindow(this.info);
+    this.windowsSvc.addWindow(this.info);
   }
 
 }

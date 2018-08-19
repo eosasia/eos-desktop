@@ -7,7 +7,7 @@ EOS Desktop currently has a basic web-browser and ability to host any web Dapp.
 ## Get Started
 Clone the Repository and run `npm install` and `npm run electron-build` to start the application. Maximize window for best user experience. 
 
-![alt text](src/assets/images/eos-screenshot.png)
+![alt text](./eosdekstop-screenshot.png)
 
 
 ## Contribute

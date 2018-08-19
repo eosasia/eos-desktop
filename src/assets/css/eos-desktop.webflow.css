@@ -212,11 +212,18 @@
 
 .div-block-11 {
   position: absolute;
+  display: block;
+  overflow: hidden;
   width: 92%;
   height: 92%;
   margin-top: 52px;
   margin-right: 0px;
   margin-left: 0px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   border-radius: 10px;
   background-color: #fff;
   text-align: center;
@@ -260,8 +267,14 @@
   align-items: center;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  background-color: #d3dce2;
+  background-color: #d3d3d3;
   cursor: default;
+}
+
+.div-block-14.url {
+  height: 36px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
 }
 
 .list-item {
@@ -621,6 +634,28 @@
 
 .div-block-31 {
   border: 1px solid #000;
+}
+
+.html-embed {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  border-radius: 5px;
+}
+
+.browser-icon {
+  margin-right: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+
+.div-block-32 {
+  height: 100%;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
 }
 
 @font-face {

@@ -132,7 +132,6 @@ export class BrowserService {
     }
   ];
 
-
   get apps(): object[] {
     return this._apps;
   }
@@ -146,7 +145,6 @@ export class BrowserService {
 
   set currentUrl(value: string) {
     this._currentUrl = value;
-    console.log(this._currentUrl);
   }
 
   addWindow(window: object) {

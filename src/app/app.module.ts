@@ -9,6 +9,8 @@ import {AppComponent} from './app.component';
 /* Feature Modules */
 import {CoreModule} from './core/core.module';
 import {SidebarModule} from './sidebar/sidebar.module';
+import {WindowsModule} from './windows/windows.module';
+
 
 // TODO DELETE AND UNINSTALL THIS AND CHECK THE ANGULAR.JSON FILE AS WELL
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
@@ -18,8 +20,7 @@ import {SideBarComponent} from './components/side-bar.component';
 import {WebviewDirective} from './webview.directive';
 import {AppIconComponent} from './components/app-icon.component';
 import {AngularDraggableModule } from 'angular2-draggable';
-import {WindowHolderComponent} from './components/window-holder.component';
-import {WindowComponent} from './components/window.component';
+
 
 
 
@@ -31,16 +32,15 @@ import {WindowComponent} from './components/window.component';
       FontAwesomeModule,
       AngularDraggableModule,
       SidebarModule,
-      NgxElectronModule
+      NgxElectronModule,
+      WindowsModule
     ],
     declarations: [
       AppComponent,
       MenuBarComponent,
       SideBarComponent,
       WebviewDirective,
-      AppIconComponent,
-      WindowHolderComponent,
-      WindowComponent
+      AppIconComponent
     ],
     providers: [
     ],
