@@ -2,6 +2,8 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {WindowAppInterface} from '../types/WindowAppInterface';
 import {WindowsService} from '../services/windows.services';
 import {FormControl} from '@angular/forms';
+const psl = require('psl');
+const urlParse = require('url-parse');
 
 @Component({
   selector: 'app-window',
@@ -33,12 +35,30 @@ export class WindowComponent implements OnInit {
       this.isLoading = false;
     });
 
+    // TODO fix this to that a new window pops up
+    this.webview.nativeElement.addEventListener('new-window', (event) => {
+      this.webview.nativeElement.loadURL(event.url);
+    });
+
   }
 
   goToUrl(event) {
+    // TODO add check that not submitting an empty string
     if (event.keyCode === 13) {
+      let formattedUrl = '';
       const url = this.url.value;
-      const formattedUrl = 'http://' + url;
+
+      // if there is not domain in the address search via google
+      if (!psl.parse(url).domain) {
+        const  googleSearch = 'http://www.google.com/search?';
+        const urlSpaceReplaced = url.replace(' ', '+');
+        formattedUrl = googleSearch + 'q=' + urlSpaceReplaced;
+      } else if (psl.isValid(url)) {
+        if (!url.includes('http://') || !url.includes('https://') ) {
+          formattedUrl = 'https://' + url;
+        }
+      }
+
       this.webview.nativeElement.loadURL(formattedUrl);
       this.title = this.webview.nativeElement.getTitle();
     }
@@ -53,7 +73,11 @@ export class WindowComponent implements OnInit {
   }
 
   refreshPage(event) {
-    this.webview.nativeElement.reload();
+    this.webview.nativeElement.reloadIgnoringCache();
+  }
+
+  stopLoading(event) {
+    this.webview.nativeElement.stop();
   }
 
   closeWindow(windowIndex: number) {
