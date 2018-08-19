@@ -2,7 +2,7 @@
 Every operating system needs a GUI! EOS Desktop is a Angular/Electron based Desktop GUI designed to allow
 users to enter a fully integrated EOS Network environment. All the best EOS and crypto-currency websites in only place.
 Users can easily access EOS Network based Dapps from the EOS Desktop. Additionally, in the future, EOS Desktop will be have its own native applications. 
-EOS Desktop currently has a basic web-browser (no tracking) and ability to host any web Dapp.
+EOS Desktop currently has a basic web-browser (no tracking or history) and ability to host any web Dapp.
 
  
 ![alt text](./eosdesktop-screenshot.png)
