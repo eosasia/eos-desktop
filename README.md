@@ -13,8 +13,8 @@ Building EOS Desktop takes a lot of hard work and time. If you want to see contr
 to the development of EOS Desktop you can send EOS to account name: `eosdesktopio`.
 
 ## Scatter Integration
-EOS Desktop uses Scatter Desktop to load your account details. 
-EOS Desktop never has access to your private keys, and at this stage in development only asks for you identity. 
+EOS Desktop uses Scatter Desktop to load your identity details. 
+EOS Desktop never has access to your private keys, and at this stage in development only asks for your identity. 
 It does not perform any EOS network operations on your accounts. 
 
 
@@ -24,5 +24,5 @@ Clone the Repository and run `npm install` and `npm run electron-build` to start
 
 
 ## Releases
-Pre Alpha Release coming soon....
+Pre-Alpha Release coming soon....
 
