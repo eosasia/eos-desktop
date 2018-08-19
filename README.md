@@ -1,7 +1,7 @@
 # EOS Desktop
-EOS Desktop is a Javascript based Desktop GUI designed to allow
-users to enter a fully integrated EOS Network environment. Users can easily access EOS Network based Dapps 
-from the EOS Desktop. Additionally, in the future, EOS Desktop will be have its own native applications. 
+Every operating system needs a GUI! EOS Desktop is a Angular/Electron based Desktop GUI designed to allow
+users to enter a fully integrated EOS Network environment. All the best EOS and crypto-currency websites in only place.
+Users can easily access EOS Network based Dapps from the EOS Desktop. Additionally, in the future, EOS Desktop will be have its own native applications. 
 EOS Desktop currently has a basic web-browser and ability to host any web Dapp.
 
  
@@ -11,6 +11,11 @@ EOS Desktop currently has a basic web-browser and ability to host any web Dapp.
 ## Contribute
 Building EOS Desktop takes a lot of hard work and time. If you want to see contribute 
 to the development of EOS Desktop you can send EOS to account name: `eosdesktopio`.
+
+## Scatter Integration
+EOS Desktop uses Scatter Desktop to load your account details. 
+EOS Desktop never has access to your private keys, and at this stage in development only asks for you identity. 
+It does not perform any EOS network operations on your accounts. 
 
 ## Get Started
 Clone the Repository and run `npm install` and `npm run electron-build` to start the application. Maximize window for best user experience. 
