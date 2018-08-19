@@ -9,7 +9,7 @@ EOS Desktop currently has a basic web-browser (no tracking) and ability to host 
 
 
 ## Contribute
-Building EOS Desktop takes a lot of hard work and time. If you want to see contribute 
+Building EOS Desktop takes a lot of hard work and time. If you want to contribute 
 to the development of EOS Desktop you can send EOS to account name: `eosdesktopio`.
 
 ## Scatter Integration
