@@ -40,9 +40,9 @@ export class BrowserService {
       url: 'https://eos.feexplorer.io/'
     },
     {
-      appName: 'EOS Tool Kit',
-      imageName: 'icons8-web-design-40.png',
-      url: 'https://eostoolkit.io/transfer'
+      appName: 'EOS Network Monitor.io',
+      imageName: 'icons8-nas-40.png',
+      url: 'http://eosnetworkmonitor.io/'
     },
     {
       appName: 'Monster EOS',
@@ -60,8 +60,13 @@ export class BrowserService {
       url: 'https://prospectors.io/'
     },
     {
-      appName: 'Youtube',
+      appName: 'On Chain FX',
       imageName: 'icons8-web-design-40.png',
+      url: 'https://onchainfx.com/'
+    },
+    {
+      appName: 'Settings',
+      imageName: 'icons8-settings-40-1.png',
       url: 'https://youtube.com/'
     }
 
@@ -129,6 +134,11 @@ export class BrowserService {
       appName: 'EOS Resource Planner',
       imageName: 'icons8-globe-40.png',
       url: 'https://www.eosrp.io/'
+    },
+    {
+      appName: 'EOS Network Monitor.io',
+      imageName: 'icons8-globe-40.png',
+      url: 'http://eosnetworkmonitor.io/'
     }
   ];
 

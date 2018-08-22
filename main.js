@@ -124,3 +124,12 @@ ipc.on('scatter', (event, arg) => {
 ipc.on('external-page', (event, arg) => {
   shell.openExternal(arg);
 });
+
+
+const fs = require('fs');
+
+fs.readdir('./electron/resources/images', (err, files) => {
+  files.forEach(file => {
+    console.log(file);
+  });
+})
