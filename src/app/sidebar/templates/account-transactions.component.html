@@ -9,7 +9,7 @@
     <div class="div-block-20" *ngFor="let action of actions" >
       <div class="text-block-10">{{ action.actionName }}</div>
       <div class="text-block-10">{{ action.time | date:'medium' }}</div>
-      <div class="text-block-10 link"><a (click)="openWebPage(action.txId)">{{ action.getTrxIdFormatted() }}</a></div>
+      <div class="text-block-10 link"><a (click)="openTrxWindow(action.txId)">{{ action.getTrxIdFormatted() }}</a></div>
     </div>
   </div>
 </div>

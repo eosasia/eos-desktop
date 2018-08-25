@@ -5,7 +5,6 @@ const url = require('url');
 const ScatterJS = require('scatter-js/dist/scatter.cjs');
 const Eosjs = require('eosjs');
 const ipc = require('electron').ipcMain;
-const shell = require('electron').shell;
 
 
 
@@ -120,16 +119,3 @@ ipc.on('scatter', (event, arg) => {
 
 });
 
-
-ipc.on('external-page', (event, arg) => {
-  shell.openExternal(arg);
-});
-
-
-const fs = require('fs');
-
-fs.readdir('./electron/resources/images', (err, files) => {
-  files.forEach(file => {
-    console.log(file);
-  });
-})

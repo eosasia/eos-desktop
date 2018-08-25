@@ -16,7 +16,10 @@ export class AccountTransactionsComponent implements OnInit {
 
   actions: Action[] = [];
 
-  constructor(private sidebarSvc: SidebarService, private scatterSvc: ScatterService, private _electronSvc: ElectronService, private windowsSvc:WindowsService) {}
+  constructor(private sidebarSvc: SidebarService,
+              private scatterSvc: ScatterService,
+              private _electronSvc: ElectronService,
+              private windowsSvc: WindowsService) {}
 
   ngOnInit() {
     this.scatterSvc.identityStream
@@ -35,21 +38,11 @@ export class AccountTransactionsComponent implements OnInit {
       });
   }
 
-  public openWebPage(transaction: string) {
-    const url = 'https://eosflare.io/tx/' + transaction;
-
-    if (this._electronSvc.isElectronApp) {
-      this._electronSvc.ipcRenderer.send('external-page', url);
-    }
-
-    if (platformBrowser) {
-      window.open(url, '_blank');
-    }
-
-  }
-
   // TODO fix this so that I only need to pass in the transactionid
-  public openTrxWindow(id: string){}
+  public openTrxWindow(id: string) {
+    const url = 'https://eosflare.io/tx/' + id;
+    this.windowsSvc.addWindow({url: url});
+  }
 
 
 }
