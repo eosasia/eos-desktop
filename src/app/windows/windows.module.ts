@@ -5,6 +5,7 @@ import {WebviewDirective} from './directives/webview.directive';
 import {AngularDraggableModule} from 'angular2-draggable';
 import { WindowComponent } from './components/window.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import { BackgroundWindowComponent } from './components/background-window.component';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import {ReactiveFormsModule} from '@angular/forms';
   declarations: [
     WindowHolderComponent,
     WebviewDirective,
-    WindowComponent
+    WindowComponent,
+    BackgroundWindowComponent
   ],
   exports: [WindowHolderComponent]
 })

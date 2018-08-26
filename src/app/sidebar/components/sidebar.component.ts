@@ -30,4 +30,7 @@ export class SidebarComponent implements OnInit {
       }
     }
   }
+
+
+  // TODO add to all components don't get account details if there is an error with the identity
 }

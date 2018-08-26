@@ -6,6 +6,7 @@ import {GetActionInterface} from '../types/interfaces/GetActionInterface';
 import {ElectronService} from 'ngx-electron';
 import {platformBrowser} from '@angular/platform-browser';
 import {WindowsService} from '../../windows/services/windows.services';
+import {Identity} from '../../core/types/interfaces/Identity';
 
 
 @Component({
@@ -23,9 +24,8 @@ export class AccountTransactionsComponent implements OnInit {
 
   ngOnInit() {
     this.scatterSvc.identityStream
-      .subscribe(result => {
-        if (result['name'] !== 'anonymous') {
-          const account_name = result['accounts'][0]['name'];
+      .subscribe((result: Identity) => {
+          const account_name = result.accounts[0]['name'];
           this.sidebarSvc
             .getTransactions(account_name)
             .subscribe((res: GetActionInterface) => {
@@ -34,7 +34,6 @@ export class AccountTransactionsComponent implements OnInit {
                 this.actions.push(action);
               });
             });
-        }
       });
   }
 

@@ -4,6 +4,7 @@ import {CPU} from '../types/CPU';
 import {Bandwidth} from '../types/Bandwidth';
 import {RAM} from '../types/RAM';
 import {ScatterService} from '../../core/services/scatter.service';
+import {Identity} from '../../core/types/interfaces/Identity';
 
 
 @Component({
@@ -19,16 +20,14 @@ export class AccountResourcesComponent implements OnInit {
 
   ngOnInit() {
     this.scatterSvc.identityStream
-      .subscribe(result => {
-        if (result['name'] !== 'anonymous') {
+      .subscribe((result: Identity) => {
           this.sidebarSvc
-            .getAccountInfo(result['accounts'][0]['name'])
+            .getAccountInfo(result.accounts[0]['name'])
             .subscribe((res: AccountInfoInterface) => {
               this.cpuInfo = new CPU(res.cpu_limit, res.total_resources.cpu_weight);
               this.bandwidthInfo = new Bandwidth(res.net_limit, res.total_resources.net_weight);
               this.ramInfo = new RAM(res.ram_quota, res.ram_usage);
             });
-        }
       });
   }
 }

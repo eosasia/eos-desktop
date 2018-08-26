@@ -1,0 +1,18 @@
+<div id="background-window" class="div-block-34" style="top:30%;left:30%" ngDraggable>
+  <div class="div-block-38 w-clearfix"><img src="assets/images/icons8-delete-16.png" width="14" height="14" class="image-2" (click)="closeWindow($event)">
+    <div class="div-block-35" >
+      <div class="div-block-39">
+        <div class="text-block-16">Desktop Background</div>
+      </div>
+    </div>
+  </div>
+  <div class="div-block-37">
+    <div class="div-block-36" *ngFor="let item of backgrounds; let i = index" [ngClass]="{'selected': false }" (click)="changeBackground(item)">
+      <img src="{{ 'assets/images/backgrounds/' + item }}" width="40" height="40"  sizes="40px">
+      <div class="text-block-17">{{ item }}</div>
+    </div>
+    <div class="div-block-36"><img src="assets/images/icons8-plus-40.png">
+      <div class="text-block-17" [ngClass]="{'hide': false }">Add another image (Currently disabled!)</div>
+    </div>
+  </div>
+</div>

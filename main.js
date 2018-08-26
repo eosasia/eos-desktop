@@ -1,10 +1,14 @@
-// Modules to control application life and create native browser window
+const os = require('os');
 const {app, BrowserWindow} = require('electron');
 const path = require('path');
 const url = require('url');
 const ScatterJS = require('scatter-js/dist/scatter.cjs');
 const Eosjs = require('eosjs');
 const ipc = require('electron').ipcMain;
+const fs = require('fs');
+const Datastore = require('nedb');
+const WebSocket = require('ws')
+global.WebSocket= WebSocket
 
 
 
@@ -13,6 +17,16 @@ const ipc = require('electron').ipcMain;
 let mainWindow;
 let scatter = null;
 let eos = null;
+let userIdentity = null;
+const homeDir = os.homedir();
+const applicationDirectory = 'Eos_Desktop';
+
+
+// if application directory does not exist, create it
+if (!fs.existsSync(path.join(homeDir, applicationDirectory))) {
+  fs.mkdirSync(path.join(homeDir, applicationDirectory));
+}
+
 
 function createWindow () {
   // Create the browser window.
@@ -24,7 +38,7 @@ function createWindow () {
   // and load the index.html of the app.
   const fileLocation = url.format({
     // TODO move dist folder to elctron/resources folder
-    pathname:path.join(__dirname, 'dist', 'eos-desktop', 'index.html'),
+    pathname:path.join(__dirname, 'dist', 'index.html'),
     protocol:'file:'
   });
 
@@ -39,32 +53,6 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   });
-
-  ScatterJS.scatter
-    .connect('eosdesktopio')
-    .then(connected => {
-      if (connected) {
-        scatter = ScatterJS.scatter;
-
-        const network = {
-          protocol:'https', // Defaults to https
-          blockchain:'eos',
-          host:'nodes.get-scatter.com', // ( or null if endorsed chainId )
-          port:443, // ( or null if defaulting to 80 )
-          chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906',
-        };
-
-        // Set up any extra options you want to use eosjs with.
-        const eosOptions = {};
-
-        // Get a reference to an 'Eosjs' instance with a Scatter signature provider.
-        eos = scatter.eos( network, Eosjs, eosOptions, 'https' );
-      }
-    });
-
-
-
-
 }
 
 // This method will be called when Electron has finished
@@ -91,31 +79,27 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-ipc.on('scatter', (event, arg) => {
-  const requiredFields = {
-    accounts:[
-      { blockchain:'eos',
-        chainId:'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906'
-      }
-    ]
-  };
 
-  const anonymous = {name: 'anonymous'};
-
-  if (scatter) {
-    scatter.getIdentity(requiredFields)
-      .then(identity => {
-        // console.log(identity);
-        event.sender.send('scatter', identity);
-      }).catch(error => {
-      // send identity name as 'anonymous' to indicate that no identity available
-      event.sender.send('scatter', anonymous);
-    });
-  } else {
-    // send identity name as 'anonymous' to indicate that no identity available
-    event.sender.send('scatter', anonymous);
-  }
-
-
+ipc.on('get-all-backgrounds', async (event, arg) => {
+  fs.readdir(path.join(__dirname, 'dist', 'assets', 'images', 'backgrounds'), (err, files) => {
+    event.sender.send('get-all-backgrounds', files);
+  });
 });
 
+// db = new Datastore({ filename: path.join(homeDir, applicationDirectory, 'identities'), autoload: true });
+
+
+// var doc = { hello: 'world'
+//     , n: 5
+//     , today: new Date()
+//     , nedbIsAwesome: true
+//     , notthere: null
+//     , notToBeSaved: undefined  // Will not be saved
+//     , fruits: [ 'apple', 'orange', 'pear' ]
+//     , infos: { name: 'nedb' }
+// };
+//
+// db.insert(doc, function (err, newDoc) {   // Callback is optional
+//     // newDoc is the newly inserted document, including its _id
+//     // newDoc has no key called notToBeSaved since its value was undefined
+// });

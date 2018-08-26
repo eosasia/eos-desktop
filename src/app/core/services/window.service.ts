@@ -7,8 +7,10 @@ import {Subject} from 'rxjs';
 })
 export class WindowService {
 
+
   private _sideBarVisible = false;
   private _sideBarVisibilityStream: Subject<boolean> = new Subject();
+  private _backgroundStream: Subject<string> = new Subject();
   private _windowSize = {
     width: 0,
     height: 0
@@ -18,6 +20,10 @@ export class WindowService {
   toggleAccountSideBar(): void {
     this._sideBarVisible = !this._sideBarVisible;
     this._sideBarVisibilityStream.next(this._sideBarVisible);
+  }
+
+  changeBackground(image: string) {
+    this._backgroundStream.next(image);
   }
 
   /** return current sidebar visibility status */
@@ -37,5 +43,10 @@ export class WindowService {
   set windowSize(value: { width: number; height: number }) {
     this._windowSize = value;
   }
+
+  get backgroundStream(): Subject<string> {
+    return this._backgroundStream;
+  }
+
 
 }

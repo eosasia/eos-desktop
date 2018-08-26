@@ -45,9 +45,9 @@ export class BrowserService {
       url: 'http://eosnetworkmonitor.io/'
     },
     {
-      appName: 'Monster EOS',
+      appName: 'EOS Bet',
       imageName: 'icons8-web-design-40.png',
-      url: 'http://monstereos.io/'
+      url: 'https://www.eosbet.io/'
     },
     {
       appName: 'Coin Market Cap',
@@ -65,12 +65,15 @@ export class BrowserService {
       url: 'https://onchainfx.com/'
     },
     {
+      appName: 'Backgrounds',
+      imageName: 'icons8-monitor-40.png',
+      url: 'local'
+    },
+    {
       appName: 'Settings',
       imageName: 'icons8-settings-40-1.png',
       url: 'https://youtube.com/'
     }
-
-
   ];
 
 

@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AccountService} from '../../core/services/account.service';
 import {SidebarService} from '../services/sidebar.service';
 import {ScatterService} from '../../core/services/scatter.service';
+import {Identity} from '../../core/types/interfaces/Identity';
 
 
 @Component({
@@ -19,19 +20,16 @@ export class AccountInfoComponent implements OnInit {
   // TODO handle what to present if account does not exist
   
   ngOnInit() {
-
+    this.accountName = 'No account available';
     // set basic account information
     this.scatterSvc.identityStream
-      .subscribe(result => {
-        if (result['name'] !== 'anonymous') {
+      .subscribe((result: Identity) => {
           this.sidebarSvc
-            .getAccountInfo(result['accounts'][0]['name'])
+            .getAccountInfo(result.accounts[0]['name'])
             .subscribe((res: AccountInfoInterface) => {
               this.accountName = res.account_name;
               this._setEOSBalances(res);
             });
-        }
-        this.accountName = 'No account available';
       });
   }
 

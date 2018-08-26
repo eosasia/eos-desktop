@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, HostListener, Input, OnInit, ViewChild} from '@angular/core';
 import {WindowsService} from '../windows/services/windows.services';
 
 
@@ -9,19 +9,21 @@ import {WindowsService} from '../windows/services/windows.services';
 export class AppIconComponent implements OnInit {
   @Input() info: any;
 
-
-
   constructor(private windowsSvc: WindowsService) {
 
   }
 
   ngOnInit() {
-
   }
 
   // todo add prevent event default on doubleclick() or click
   openWindow() {
-    this.windowsSvc.addWindow(this.info);
-  }
+    if (this.info.url === 'local') {
+        // send event to window holder to open the specified window
+      this.windowsSvc.openLocalWindow(this.info);
+    } else {
+      this.windowsSvc.addWindow(this.info);
+    }
 
+  }
 }

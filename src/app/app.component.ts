@@ -1,10 +1,8 @@
 import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {BrowserService} from './core/services/browser.service';
 import {WindowService} from './core/services/window.service';
-import {ShortcutIconComponent} from './core/components/shortcut-icon.component';
 import {ScatterService} from './core/services/scatter.service';
-import ScatterJS from 'scatter-js/dist/scatter.esm';
-import {platformBrowser} from '@angular/platform-browser';
+
 
 
 
@@ -18,6 +16,7 @@ export class AppComponent implements OnInit {
   public sideBarVisibility = false;
   public windows;
   public shortCutIcons;
+  public objExp = null;
 
   @ViewChild('desktopWindow') window;
 
@@ -27,8 +26,17 @@ export class AppComponent implements OnInit {
     this.windows = this.browserSvc.openWindows;
     this.windowSvc.windowSize = { width: this.window.nativeElement.offsetWidth, height: this.window.nativeElement.offsetHeight };
     this.shortCutIcons = this.browserSvc.windowShortcutApps;
+    // TODO add error handling and uncomment
     this.scatterSvc.connectToScatter();
-
+    this.scatterSvc.cofigureEosJs();
+    this.windowSvc
+      .backgroundStream
+      .subscribe((result: string) => {
+        const url = './assets/images/backgrounds/' + result;
+        this.objExp = {
+          'background-image': 'url(' + url + ')'
+        };
+      });
   }
 
   private closeWindow(windowIndex: number) {
@@ -36,3 +44,6 @@ export class AppComponent implements OnInit {
   }
 
 }
+
+// "{'background-image': 'url(' + photo + ')'}"
+// url('../images/purple-galaxy.jpg')

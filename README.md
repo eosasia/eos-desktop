@@ -25,4 +25,3 @@ Clone the Repository and run `npm install` and `npm run electron-build` to start
 
 ## Releases
 Pre-Alpha Release coming soon....
-

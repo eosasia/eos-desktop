@@ -1,21 +1,20 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {forkJoin} from 'rxjs/observable/forkJoin';
+import {forkJoin, Observable} from 'rxjs';
 import {AccountService} from '../../core/services/account.service';
-import {Observable} from 'rxjs';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/of';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SidebarService {
+
   get knownCurrencies(): { symbol: string; code: string }[] {
     return this._knownCurrencies;
   }
 
-  /** link to all tokens on the network */
-  /** https://docs.google.com/spreadsheets/d/10YwFRklMpu99OzqzUUVXhwP4SAytlUOje29WMgtUqe0/htmlview */
+  /* link to all tokens on the network */
+  /* https://docs.google.com/spreadsheets/d/10YwFRklMpu99OzqzUUVXhwP4SAytlUOje29WMgtUqe0/htmlview */
   private _knownCurrencies = [
     {
       symbol: 'IQ',
@@ -80,7 +79,8 @@ export class SidebarService {
       const currencyJson = JSON.stringify(currency);
 
       /* create currency request */
-      const request = this.http.post(`${this.accountSvc.nodeUrl}${api}`, currencyJson).catch(res => Observable.of(res));
+      // TODO figure out how to handle errors
+      const request = this.http.post(`${this.accountSvc.nodeUrl}${api}`, currencyJson)// .catch(res => Observable.of(res));
 
       /* push to currency request list */
       currencyRequests.push(request);
