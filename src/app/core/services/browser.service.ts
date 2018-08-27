@@ -15,28 +15,18 @@ export class BrowserService {
       url: 'https://yahoo.com/'
     },
     {
-      appName: 'P2P Messenger',
-      imageName: 'icons8-chat-40.png',
-      url: 'https://yahoo.com/'
+      appName: 'EOS Tool Kit',
+      imageName: 'icon-eostoolkit.png',
+      url: 'https://eostoolkit.io/home'
     },
     {
-      appName: 'EOS App Store',
-      imageName: 'icons8-shop-40.png',
-      url: 'https://yahoo.com/'
-    },
-    {
-      appName: 'EOS Flare',
-      imageName: 'icons8-web-design-40.png',
-      url: 'https://eosflare.io/'
-    },
-    {
-      appName: 'EOS Park',
-      imageName: 'icons8-web-design-40.png',
-      url: 'https://eospark.com/'
+      appName: 'EOS Authority',
+      imageName: 'icon-eos-authority.png',
+      url: 'https://eosauthority.com/account'
     },
     {
       appName: 'EOS Fee Explorer',
-      imageName: 'icons8-web-design-40.png',
+      imageName: 'icon-fee-explorer.png',
       url: 'https://eos.feexplorer.io/'
     },
     {
@@ -56,8 +46,13 @@ export class BrowserService {
     },
     {
       appName: 'Prospectors',
-      imageName: 'icons8-web-design-40.png',
+      imageName: 'icon-prospectors .png',
       url: 'https://prospectors.io/'
+    },
+    {
+      appName: 'Wizards.one',
+      imageName: 'icon-eos-wizard.png',
+      url: 'https://wizards.one/#/'
     },
     {
       appName: 'On Chain FX',
@@ -129,19 +124,9 @@ export class BrowserService {
       url: 'https://bloks.io/'
     },
     {
-      appName: 'EOS Tool Kit',
-      imageName: 'icons8-globe-40.png',
-      url: 'https://eostoolkit.io/home'
-    },
-    {
       appName: 'EOS Resource Planner',
       imageName: 'icons8-globe-40.png',
       url: 'https://www.eosrp.io/'
-    },
-    {
-      appName: 'EOS Network Monitor.io',
-      imageName: 'icons8-globe-40.png',
-      url: 'http://eosnetworkmonitor.io/'
     }
   ];
 

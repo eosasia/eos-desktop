@@ -29,7 +29,8 @@ export class AccountTransactionsComponent implements OnInit {
           this.sidebarSvc
             .getTransactions(account_name)
             .subscribe((res: GetActionInterface) => {
-              res.actions.forEach(item => {
+              const reversedList = res.actions.reverse();
+              reversedList.forEach(item => {
                 const action = new Action(item);
                 this.actions.push(action);
               });
