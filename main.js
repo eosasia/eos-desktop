@@ -7,8 +7,8 @@ const Eosjs = require('eosjs');
 const ipc = require('electron').ipcMain;
 const fs = require('fs');
 const Datastore = require('nedb');
-const WebSocket = require('ws')
-global.WebSocket= WebSocket
+// const WebSocket = require('ws')
+// global.WebSocket= WebSocket
 
 
 
