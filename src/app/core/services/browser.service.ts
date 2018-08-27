@@ -46,7 +46,7 @@ export class BrowserService {
     },
     {
       appName: 'EOS Bet',
-      imageName: 'icons8-web-design-40.png',
+      imageName: 'icons8-dice-40.png',
       url: 'https://www.eosbet.io/'
     },
     {
