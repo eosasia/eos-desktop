@@ -19,7 +19,7 @@ export class ShortcutIconComponent implements OnInit {
 
   private _setIconPosition() {
     const YDistance = Math.floor(Math.random() * ((this.windowSvc.windowSize.height - 50) - 50 + 1)) + 50;
-    const XDistance = Math.floor(Math.random() * ((this.windowSvc.windowSize.width - 70) - 70 + 1)) + 70;
+    const XDistance = Math.floor(Math.random() * ((this.windowSvc.windowSize.width - 80) - 80 + 1)) + 70;
 
     this.topDistance = String(YDistance) + 'px';
     this.leftDistance = String(XDistance) + 'px';

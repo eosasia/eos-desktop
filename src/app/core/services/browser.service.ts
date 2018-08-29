@@ -36,12 +36,12 @@ export class BrowserService {
     },
     {
       appName: 'EOS Bet',
-      imageName: 'icons8-dice-40.png',
+      imageName: 'icon-eosbet.png',
       url: 'https://www.eosbet.io/'
     },
     {
       appName: 'Coin Market Cap',
-      imageName: 'icons8-web-design-40.png',
+      imageName: 'icon-coinmarketcap.png',
       url: 'https://coinmarketcap.com'
     },
     {

@@ -11,7 +11,6 @@ import {CoreModule} from './core/core.module';
 import {SidebarModule} from './sidebar/sidebar.module';
 import {WindowsModule} from './windows/windows.module';
 
-
 import {MenuBarComponent} from './components/menu-bar.component';
 import {SideBarComponent} from './components/side-bar.component';
 import {WebviewDirective} from './webview.directive';

@@ -2,30 +2,22 @@ const os = require('os');
 const {app, BrowserWindow} = require('electron');
 const path = require('path');
 const url = require('url');
-const ScatterJS = require('scatter-js/dist/scatter.cjs');
-const Eosjs = require('eosjs');
 const ipc = require('electron').ipcMain;
 const fs = require('fs');
 const Datastore = require('nedb');
-// const WebSocket = require('ws')
-// global.WebSocket= WebSocket
-
-
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
-let scatter = null;
-let eos = null;
 let userIdentity = null;
 const homeDir = os.homedir();
 const applicationDirectory = 'Eos_Desktop';
 
 
-// if application directory does not exist, create it
-if (!fs.existsSync(path.join(homeDir, applicationDirectory))) {
-  fs.mkdirSync(path.join(homeDir, applicationDirectory));
-}
+// // if application directory does not exist, create it
+// if (!fs.existsSync(path.join(homeDir, applicationDirectory))) {
+//   fs.mkdirSync(path.join(homeDir, applicationDirectory));
+// }
 
 
 function createWindow () {
@@ -44,7 +36,7 @@ function createWindow () {
 
   mainWindow.loadURL(fileLocation);
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

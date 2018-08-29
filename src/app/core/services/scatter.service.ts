@@ -46,7 +46,7 @@ export class ScatterService {
             .then((result: Identity) => {
               this.identity = result;
               this.identityStream.next(this.identity);
-              console.log('identity' + JSON.stringify(result));
+              // console.log('identity' + JSON.stringify(result));
             })
             .catch(err => {
               console.log(err);

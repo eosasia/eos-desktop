@@ -9,14 +9,10 @@ import {WindowsService} from '../windows/services/windows.services';
 export class AppIconComponent implements OnInit {
   @Input() info: any;
 
-  constructor(private windowsSvc: WindowsService) {
+  constructor(private windowsSvc: WindowsService) {}
 
-  }
+  ngOnInit() {}
 
-  ngOnInit() {
-  }
-
-  // todo add prevent event default on doubleclick() or click
   openWindow() {
     if (this.info.url === 'local') {
         // send event to window holder to open the specified window
