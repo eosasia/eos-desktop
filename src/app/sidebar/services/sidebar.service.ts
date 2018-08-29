@@ -55,7 +55,28 @@ export class SidebarService {
     {
       symbol: 'WIZZ',
       code: 'wizznetwork1'
+    },
+    {
+      symbol: 'ESB',
+      code: 'esbcointoken'
+    },
+    {
+      symbol: 'EDNA',
+      code: 'ednazztokens'
+    },
+    {
+      symbol: 'EOX',
+      code: 'eoxeoxeoxeox'
+    },
+    {
+      symbol: 'EOSDAC',
+      code: 'eosdactokens'
     }
+    // TODO find contract address for MEETONE and EON and EOP token
+    // {
+    //   symbol: 'MEETONE' and EON
+    //   code: '???'
+    // }
   ];
 
   constructor(private http: HttpClient, private accountSvc: AccountService) {}

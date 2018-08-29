@@ -5,7 +5,7 @@ Users can easily access EOS Network based Dapps from the EOS Desktop. Additional
 EOS Desktop currently has a basic web-browser (no tracking) and ability to host any web Dapp.
 
  
-![alt text](./screen-shot-compressed.png)
+![alt text](./screen-shot-min.png)
 
 
 ## Support
