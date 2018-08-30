@@ -21,8 +21,9 @@ It does not perform any EOS network operations on your accounts.
 ## Get Started
 Clone the Repository and run `npm install` and `npm run electron-build` to start the application. Maximize window for best user experience. 
 
-## Safety
-doesnt go to non https sites.
+## General Safety
+Never put your private keys into EOS Desktop, the browser search bar, 
+or any site that you navigate to.
 
 ## Releases
 Pre-Alpha Release coming soon....
