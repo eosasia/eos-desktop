@@ -23,7 +23,7 @@ Clone the Repository and run `npm install` and `npm run electron-build` to start
 
 ## General Safety
 Never put your private keys into EOS Desktop, the browser search bar, 
-or any site that you navigate to.
+or any site that you navigate to. Use Scatter Desktop to manage access to your account keys/permissions.
 
 ## Releases
 Pre-Alpha Release coming soon....
