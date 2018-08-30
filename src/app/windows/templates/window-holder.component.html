@@ -1,5 +1,4 @@
 <div #holder>
-
   <app-window *ngFor="let window of windows; let i = index" [index]="i" [info]="window"></app-window>
   <app-background-window *ngIf="backgroundWindowIsVisible" (close)="closeBackgroundWindow($event)"></app-background-window>
 </div>

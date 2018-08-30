@@ -10,6 +10,7 @@ import {Subject} from 'rxjs';
 export class WindowsService {
 
 
+
   private _openWindows: WindowApp[] = [];
   private _backgrounds: string[];
   private _openLocalWindowStream: Subject<object> = new Subject();
@@ -17,7 +18,7 @@ export class WindowsService {
   constructor(private _electronSvc: ElectronService) {}
 
   public addWindow(window: WindowAppInterface): void {
-    const newWindow = new WindowApp(window);
+    const newWindow = new WindowApp(window, this._openWindows.length + 1);
     this._openWindows.push(newWindow);
   }
 
@@ -43,6 +44,18 @@ export class WindowsService {
     this.openLocalWindowStream.next(window);
   }
 
+  // TODO finish implementing pop to top
+  public moveWindowToTop(index: number) {
+    for (let i = 0; i < this._openWindows.length; i++) {
+      console.log(index);
+      if (i === index) {
+        this._openWindows[i].zIndex = 1000;
+      } else {
+        this._openWindows[i].zIndex = i;
+      }
+    }
+  }
+
   get backgrounds(): string[] {
     return this._backgrounds;
   }
@@ -54,6 +67,4 @@ export class WindowsService {
   get openLocalWindowStream(): Subject<object> {
     return this._openLocalWindowStream;
   }
-
-
 }

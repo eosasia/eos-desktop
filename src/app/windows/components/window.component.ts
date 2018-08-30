@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {WindowAppInterface} from '../types/WindowAppInterface';
 import {WindowsService} from '../services/windows.services';
 import {FormControl} from '@angular/forms';
@@ -16,6 +16,8 @@ export class WindowComponent implements OnInit {
   public url = new FormControl('');
   public title = '';
   public isLoading: boolean;
+  @Output() goToTop: EventEmitter<number> = new EventEmitter();
+
 
   @ViewChild('viewHolder') webview;
 
@@ -42,7 +44,7 @@ export class WindowComponent implements OnInit {
 
   }
 
-  goToUrl(event) {
+  public goToUrl(event) {
     // TODO add check that not submitting an empty string
     if (event.keyCode === 13) {
       let formattedUrl = '';
@@ -64,27 +66,29 @@ export class WindowComponent implements OnInit {
     }
   }
 
-  goBack(event) {
+  public goBack(event) {
     this.webview.nativeElement.goBack();
   }
 
-  goForward(event) {
+  public goForward(event) {
     this.webview.nativeElement.goForward();
   }
 
-  refreshPage(event) {
+  public refreshPage(event) {
     this.webview.nativeElement.reloadIgnoringCache();
   }
 
-  stopLoading(event) {
+  public stopLoading(event) {
     this.webview.nativeElement.stop();
   }
 
-  closeWindow(windowIndex: number) {
+  public closeWindow(windowIndex: number) {
     this.windowsSvc.removeWindow(windowIndex);
   }
 
-
+  public popToTop() {
+    this.windowsSvc.moveWindowToTop(this.index);
+  }
 }
 
 

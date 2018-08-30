@@ -37,10 +37,7 @@ export class WindowHolderComponent implements OnInit {
       });
   }
 
-  closeBackgroundWindow(event) {
+  public closeBackgroundWindow(event) {
     this.backgroundWindowIsVisible = event;
   }
-
-
-
 }
