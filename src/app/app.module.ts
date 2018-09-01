@@ -10,8 +10,6 @@ import {AppComponent} from './app.component';
 import {CoreModule} from './core/core.module';
 import {SidebarModule} from './sidebar/sidebar.module';
 import {WindowsModule} from './windows/windows.module';
-
-import {MenuBarComponent} from './components/menu-bar.component';
 import {SideBarComponent} from './components/side-bar.component';
 import {WebviewDirective} from './webview.directive';
 import {AppIconComponent} from './components/app-icon.component';
@@ -32,7 +30,6 @@ import {AngularDraggableModule } from 'angular2-draggable';
     ],
     declarations: [
       AppComponent,
-      MenuBarComponent,
       SideBarComponent,
       WebviewDirective,
       AppIconComponent

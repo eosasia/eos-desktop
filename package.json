@@ -1,7 +1,7 @@
 {
   "name": "eos-desktop",
   "version": "0.0.0",
-  "main": "main.js",
+  "main": "electron.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -10,7 +10,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "electron": "electron .",
-    "electron-build": "ng build --prod && electron ."
+    "electron-build": "ng build --prod && electron .",
+    "mac-build": "sudo electron-packager ./  EOS_Desktop --platform=darwin --arch=x64 --asar --overwrite"
   },
   "private": true,
   "dependencies": {

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {AccountService} from '../core/services/account.service';
-import {WindowService} from '../core/services/window.service';
-import {ScatterService} from '../core/services/scatter.service';
-import {Identity} from '../core/types/interfaces/Identity';
+import {AccountService} from '../../core/services/account.service';
+import {WindowService} from '../../core/services/window.service';
+import {ScatterService} from '../../core/services/scatter.service';
+import {Identity} from '../../core/types/interfaces/Identity';
 
 
 @Component({
@@ -29,8 +29,13 @@ export class MenuBarComponent implements OnInit {
       });
   }
 
-  toogleSideBar() {
+  public toogleSideBar() {
     this.windowSvc.toggleAccountSideBar();
+  }
+
+  public connectToScatter() {
+    console.log('Getting Scatter Identity');
+    this.scatterSvc.connectToScatter();
   }
 
 }

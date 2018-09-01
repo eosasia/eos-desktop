@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {forkJoin, Observable} from 'rxjs';
+import {forkJoin, Observable, of, throwError} from 'rxjs';
 import {AccountService} from '../../core/services/account.service';
 import { catchError } from 'rxjs/operators';
 
@@ -71,12 +71,39 @@ export class SidebarService {
     {
       symbol: 'EOSDAC',
       code: 'eosdactokens'
+    },
+    {
+      symbol: 'BOID',
+      code: 'boidcomtoken'
+    },
+    {
+      symbol: 'BT',
+      code: 'eosbtextoken'
+    },
+    {
+      symbol: 'MEETONE',
+      code: 'eosiomeetone'
+    },
+    {
+      symbol: 'IPOS',
+      code: 'oo1122334455'
+    },
+    {
+      symbol: 'RIDL',
+      code: 'ridlridlcoin'
+    },
+    {
+      symbol: 'TRYBE',
+      code: 'trybenetwork'
+    },
+    {
+      symbol: 'GNX',
+      code: 'finalnoobtok'
+    },
+    {
+      symbol: 'IRESPO',
+      code: 'irespotokens'
     }
-    // TODO find contract address for MEETONE and EON and EOP token
-    // {
-    //   symbol: 'MEETONE' and EON
-    //   code: '???'
-    // }
   ];
 
   constructor(private http: HttpClient, private accountSvc: AccountService) {}
@@ -100,8 +127,13 @@ export class SidebarService {
       const currencyJson = JSON.stringify(currency);
 
       /* create currency request */
-      // TODO figure out how to handle errors
-      const request = this.http.post(`${this.accountSvc.nodeUrl}${api}`, currencyJson)// .catch(res => Observable.of(res));
+      // TODO still need to handle this error better
+      const request = this.http
+        .post(`${this.accountSvc.nodeUrl}${api}`, currencyJson)
+        .pipe(catchError((err, caught) => {
+          // console.log(currencyJson);
+          return of([]);
+        }));
 
       /* push to currency request list */
       currencyRequests.push(request);

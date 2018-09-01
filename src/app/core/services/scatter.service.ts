@@ -19,7 +19,7 @@ declare var window: Window;
 export class ScatterService {
   private _scatter: any;
   private _eos: any;
-  private _identity: Identity;
+  private _identity: Identity = null;
   private _identityStream: Subject<Identity> = new Subject();
 
   constructor(private _electronSvc: ElectronService) {}
@@ -34,30 +34,33 @@ export class ScatterService {
       ]
     };
 
-    scatter
-      .connect('eos-desktop')
-      .then(connected => {
-        if (connected) {
-          this.scatter = scatter;
-          window.scatter = null;
-          // console.log(this.scatter.getIdentity);
-          this.scatter
-            .getIdentity(requiredFields)
-            .then((result: Identity) => {
-              this.identity = result;
-              this.identityStream.next(this.identity);
-              // console.log('identity' + JSON.stringify(result));
-            })
-            .catch(err => {
-              console.log(err);
-              alert(err.message);
-            });
-        }
-      })
-      .catch(err => {
-        console.log(err);
-        alert(err);
-      });
+    if (scatter && (this._identity === null)) {
+        scatter
+          .connect('eos-desktop')
+          .then(connected => {
+            if (connected) {
+              this.scatter = scatter;
+              window.scatter = null;
+              // console.log(this.scatter.getIdentity);
+              this.scatter
+                .getIdentity(requiredFields)
+                .then((result: Identity) => {
+                  this.identity = result;
+                  this.identityStream.next(this.identity);
+                  console.log('identity' + JSON.stringify(result));
+                })
+                .catch(err => {
+                  // console.log('identity error: ' + err.message);
+                  alert('Unable to retrieve your identity. Please open Scatter Desktop and restart EOS Desktop');
+                });
+            }
+          })
+          .catch(err => {
+            // console.log('connect error' + err);
+            alert('Unable to retrieve your identity. Please open Scatter Desktop and restart EOS Desktop');
+          });
+    }
+
   }
 
   cofigureEosJs() {

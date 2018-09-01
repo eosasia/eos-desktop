@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
     this.windowSvc.windowSize = { width: this.window.nativeElement.offsetWidth, height: this.window.nativeElement.offsetHeight };
     this.shortCutIcons = this.browserSvc.windowShortcutApps;
     // TODO add error handling and uncomment
-    this.scatterSvc.connectToScatter();
+    // this.scatterSvc.connectToScatter();
     this.scatterSvc.cofigureEosJs();
     this.windowSvc
       .backgroundStream

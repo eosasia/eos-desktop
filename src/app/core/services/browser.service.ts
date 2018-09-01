@@ -55,6 +55,11 @@ export class BrowserService {
       url: 'https://wizards.one/#/'
     },
     {
+      appName: 'Pump and Dump Wars',
+      imageName: 'icon-pump-and-dump.png',
+      url: 'https://game.pumpdumpwars.com/?ref=knightplay11'
+    },
+    {
       appName: 'On Chain FX',
       imageName: 'icons8-web-design-40.png',
       url: 'https://onchainfx.com/'
@@ -109,16 +114,6 @@ export class BrowserService {
       url: 'http://allthingseos.com/'
     },
     {
-      appName: 'How to Use EOS.js',
-      imageName: 'icons8-globe-40.png',
-      url: 'https://medium.com/coinmonks/how-to-use-eosjs-api-1-770b037b22ad'
-    },
-    {
-      appName: 'Icon Set',
-      imageName: 'icons8-globe-40.png',
-      url: 'https://icons8.com/icon/set/web/office'
-    },
-    {
       appName: 'Bloks.io',
       imageName: 'icons8-globe-40.png',
       url: 'https://bloks.io/'
@@ -127,6 +122,11 @@ export class BrowserService {
       appName: 'EOS Resource Planner',
       imageName: 'icons8-globe-40.png',
       url: 'https://www.eosrp.io/'
+    },
+    {
+      appName: 'Dapp Radar',
+      imageName: 'icon-dapp-radar.png',
+      url: 'https://dappradar.com/eos-dapps'
     }
   ];
 

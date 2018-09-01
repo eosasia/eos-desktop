@@ -28,7 +28,6 @@ export class AccountTokensComponent implements OnInit {
                     this.tokens.push(token);
                   }
                 });
-
             });
       });
   }
