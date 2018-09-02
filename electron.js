@@ -1,24 +1,17 @@
-const os = require('os');
 const {app, BrowserWindow} = require('electron');
 const path = require('path');
 const url = require('url');
 const ipc = require('electron').ipcMain;
 const fs = require('fs');
-const Datastore = require('nedb');
+// const Datastore = require('nedb');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
-let userIdentity = null;
-const homeDir = os.homedir();
-const applicationDirectory = 'Eos_Desktop';
 
-
-// // if application directory does not exist, create it
-// if (!fs.existsSync(path.join(homeDir, applicationDirectory))) {
-//   fs.mkdirSync(path.join(homeDir, applicationDirectory));
-// }
-
+const userDataPath = app.getPath('userData');
+// https://github.com/electron/electron/blob/master/docs/api/app.md#appgetpathname
+console.log(userDataPath);
 
 function createWindow () {
   // Create the browser window.

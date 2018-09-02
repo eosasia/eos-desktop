@@ -1,6 +1,6 @@
 import {Component, ElementRef, Input, OnInit} from '@angular/core';
 import {WindowsService} from '../../windows/services/windows.services';
-import {WindowService} from '../services/window.service';
+import {AppService} from '../services/app.service';
 
 @Component({
   selector: 'app-shortcut-icon',
@@ -11,15 +11,15 @@ export class ShortcutIconComponent implements OnInit {
   leftDistance: string;
   @Input() info: any;
 
-  constructor(private el: ElementRef, private windowsSvc: WindowsService, private windowSvc: WindowService) {}
+  constructor(private el: ElementRef, private windowsSvc: WindowsService, private appSvc: AppService) {}
 
   ngOnInit() {
     this._setIconPosition();
   }
 
   private _setIconPosition() {
-    const YDistance = Math.floor(Math.random() * ((this.windowSvc.windowSize.height - 50) - 50 + 1)) + 50;
-    const XDistance = Math.floor(Math.random() * ((this.windowSvc.windowSize.width - 80) - 80 + 1)) + 70;
+    const YDistance = Math.floor(Math.random() * ((this.appSvc.windowSize.height - 50) - 50 + 1)) + 50;
+    const XDistance = Math.floor(Math.random() * ((this.appSvc.windowSize.width - 80) - 80 + 1)) + 70;
 
     this.topDistance = String(YDistance) + 'px';
     this.leftDistance = String(XDistance) + 'px';

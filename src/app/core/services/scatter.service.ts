@@ -60,10 +60,9 @@ export class ScatterService {
             alert('Unable to retrieve your identity. Please open Scatter Desktop and restart EOS Desktop');
           });
     }
-
   }
 
-  cofigureEosJs() {
+  configureEOSJS() {
     const network = {
       protocol: 'https', // Defaults to https
       blockchain: 'eos',
@@ -110,6 +109,5 @@ export class ScatterService {
   set identityStream(value: Subject<Identity>) {
     this._identityStream = value;
   }
-
 }
 

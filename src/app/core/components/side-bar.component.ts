@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {BrowserService} from '../core/services/browser.service';
-
+import {AppService} from '../services/app.service';
 
 
 @Component({
@@ -8,13 +7,11 @@ import {BrowserService} from '../core/services/browser.service';
   templateUrl: '../templates/side-bar.component.html'
 })
 export class SideBarComponent implements OnInit {
+  public apps: object;
 
-  apps: object;
-
-  constructor(private browserSvc: BrowserService) {}
+  constructor(private appSvc: AppService) {}
 
   ngOnInit() {
-    this.apps = this.browserSvc.apps;
+    this.apps = this.appSvc.apps;
   }
-
 }

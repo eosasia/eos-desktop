@@ -1,31 +1,31 @@
 import {NgModule, Optional, SkipSelf} from '@angular/core';
 import {CommonModule } from '@angular/common';
-import {BrowserService} from './services/browser.service';
 import {AccountService} from './services/account.service';
-import {WindowService} from './services/window.service';
-import {ShortcutIconComponent} from './components/shortcut-icon.component';
+import {AppService} from './services/app.service';
 import {DraggableDirective} from './directives/draggable.directive';
 import {ScatterService} from './services/scatter.service';
-import {MenuBarComponent} from './components/menu-bar.component';
+import {ComponentList} from './components/_components';
+import {WebviewDirective} from './directives/webview.directive';
 
 
 @NgModule({
-  imports:      [ CommonModule ],
-  declarations: [
-    ShortcutIconComponent,
-    DraggableDirective,
-    MenuBarComponent
+  imports: [
+    CommonModule
   ],
-  providers:    [
-    BrowserService,
+  declarations: [
+    ...ComponentList,
+    DraggableDirective,
+    WebviewDirective
+  ],
+  providers: [
     AccountService,
-    WindowService,
+    AppService,
     ScatterService
   ],
   exports: [
-    ShortcutIconComponent,
+    ...ComponentList,
     DraggableDirective,
-    MenuBarComponent
+    WebviewDirective
   ]
 })
 export class CoreModule {

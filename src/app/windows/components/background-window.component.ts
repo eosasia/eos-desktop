@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {WindowsService} from '../services/windows.services';
-import {WindowService} from '../../core/services/window.service';
+import {AppService} from '../../core/services/app.service';
 
 @Component({
   selector: 'app-background-window',
@@ -13,7 +13,7 @@ export class BackgroundWindowComponent implements OnInit {
   @Output() close: EventEmitter<any> = new EventEmitter();
 
 
-  constructor(private windowsSvc: WindowsService, private windowSvc: WindowService) { }
+  constructor(private windowsSvc: WindowsService, private appSvc: AppService) { }
 
   ngOnInit() {
     this.backgrounds = this.windowsSvc.backgrounds;
@@ -24,7 +24,7 @@ export class BackgroundWindowComponent implements OnInit {
   }
 
   changeBackground(image: string) {
-    this.windowSvc.changeBackground(image);
+    this.appSvc.changeBackground(image);
   }
 
 }

@@ -1,13 +1,19 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {Subject} from 'rxjs';
 
+// TODO change the name of this services
 @Injectable({
   providedIn: 'root',
 })
-export class BrowserService {
-  private _currentUrl = 'https://eos.feexplorer.io/';
-  private _openWindows: object[] = [];
-  // Create JSON FILE FOR THIS STUFF
-  // TODO
+export class AppService {
+  private _sideBarVisible = false;
+  private _sideBarVisibilityStream: Subject<boolean> = new Subject();
+  private _backgroundStream: Subject<string> = new Subject();
+  private _windowSize = {
+    width: 0,
+    height: 0
+  };
+
   private _apps: object[] = [
     {
       appName: 'Zoom Browser',
@@ -76,7 +82,6 @@ export class BrowserService {
     }
   ];
 
-
   private _windowShortcutApps: object[] = [
     {
       appName: 'Youtube',
@@ -130,33 +135,43 @@ export class BrowserService {
     }
   ];
 
-  get apps(): object[] {
-    return this._apps;
-  }
-  get openWindows(): object[] {
-    return this._openWindows;
-  }
-
-  get currentUrl(): string {
-    return this._currentUrl;
+  /** toggle sidebar visibility status */
+  toggleAccountSideBar(): void {
+    this._sideBarVisible = !this._sideBarVisible;
+    this._sideBarVisibilityStream.next(this._sideBarVisible);
   }
 
-  set currentUrl(value: string) {
-    this._currentUrl = value;
+  changeBackground(image: string) {
+    this._backgroundStream.next(image);
   }
 
-  addWindow(window: object) {
-    this._openWindows.push(window);
+  /** return current sidebar visibility status */
+  get sideBarVisible(): boolean {
+    return this._sideBarVisible;
   }
 
-  removeWindow(index: number) {
-    this._openWindows.splice(index, 1);
+  /** return Subject Observable for sidebar toggle visibility */
+  get sideBarVisibilityStream(): Subject<boolean> {
+    return this._sideBarVisibilityStream;
+  }
+
+  get windowSize(): { width: number; height: number } {
+    return this._windowSize;
+  }
+
+  set windowSize(value: { width: number; height: number }) {
+    this._windowSize = value;
+  }
+
+  get backgroundStream(): Subject<string> {
+    return this._backgroundStream;
   }
 
   get windowShortcutApps(): object[] {
     return this._windowShortcutApps;
   }
 
-  constructor() { }
-
+  get apps(): object[] {
+    return this._apps;
+  }
 }

@@ -1,10 +1,6 @@
-import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
-import {BrowserService} from './core/services/browser.service';
-import {WindowService} from './core/services/window.service';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {AppService} from './core/services/app.service';
 import {ScatterService} from './core/services/scatter.service';
-
-
-
 
 @Component({
   selector: 'app-root',
@@ -20,16 +16,15 @@ export class AppComponent implements OnInit {
 
   @ViewChild('desktopWindow') window;
 
-  constructor(private browserSvc: BrowserService, private windowSvc: WindowService, private scatterSvc: ScatterService) {}
+  constructor(private appSvc: AppService, private scatterSvc: ScatterService) {}
 
   ngOnInit() {
-    this.windows = this.browserSvc.openWindows;
-    this.windowSvc.windowSize = { width: this.window.nativeElement.offsetWidth, height: this.window.nativeElement.offsetHeight };
-    this.shortCutIcons = this.browserSvc.windowShortcutApps;
+    this.appSvc.windowSize = { width: this.window.nativeElement.offsetWidth, height: this.window.nativeElement.offsetHeight };
+    this.shortCutIcons = this.appSvc.windowShortcutApps;
     // TODO add error handling and uncomment
     // this.scatterSvc.connectToScatter();
-    this.scatterSvc.cofigureEosJs();
-    this.windowSvc
+    this.scatterSvc.configureEOSJS();
+    this.appSvc
       .backgroundStream
       .subscribe((result: string) => {
         const url = './assets/images/backgrounds/' + result;
@@ -38,12 +33,5 @@ export class AppComponent implements OnInit {
         };
       });
   }
-
-  private closeWindow(windowIndex: number) {
-    this.browserSvc.removeWindow(windowIndex);
-  }
-
 }
 
-// "{'background-image': 'url(' + photo + ')'}"
-// url('../images/purple-galaxy.jpg')

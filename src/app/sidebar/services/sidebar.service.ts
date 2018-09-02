@@ -103,6 +103,10 @@ export class SidebarService {
     {
       symbol: 'IRESPO',
       code: 'irespotokens'
+    },
+    {
+      symbol: 'DAB',
+      code: 'eoscafekorea'
     }
   ];
 

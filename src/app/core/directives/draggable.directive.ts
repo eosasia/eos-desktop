@@ -6,10 +6,10 @@ import {Directive, ElementRef, HostListener} from '@angular/core';
 })
 export class DraggableDirective {
 
-  pos1 = 0;
-  pos2 = 0;
-  pos3 = 0;
-  pos4 = 0;
+  public pos1 = null;
+  public pos2 = null;
+  public pos3 = null;
+  public pos4 = null;
 
   constructor(private el: ElementRef) {}
 
@@ -39,14 +39,11 @@ export class DraggableDirective {
     this.el.nativeElement.style.top = (this.el.nativeElement.offsetTop - this.pos2) + "px";
     this.el.nativeElement.style.left = (this.el.nativeElement.offsetLeft - this.pos1) + "px";
 
-  }
-
+  };
 
   private closeDragElement = () => {
     /* stop moving when mouse button is released:*/
     document.onmouseup = null;
     document.onmousemove = null;
   }
-
-
 }

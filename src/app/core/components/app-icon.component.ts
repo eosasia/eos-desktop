@@ -1,5 +1,5 @@
-import {Component, ElementRef, HostListener, Input, OnInit, ViewChild} from '@angular/core';
-import {WindowsService} from '../windows/services/windows.services';
+import {Component, Input, OnInit} from '@angular/core';
+import {WindowsService} from '../../windows/services/windows.services';
 
 
 @Component({
@@ -20,6 +20,5 @@ export class AppIconComponent implements OnInit {
     } else {
       this.windowsSvc.addWindow(this.info);
     }
-
   }
 }

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AccountService} from '../../core/services/account.service';
-import {WindowService} from '../../core/services/window.service';
+import {AppService} from '../../core/services/app.service';
 import {ScatterService} from '../../core/services/scatter.service';
 import {Identity} from '../../core/types/interfaces/Identity';
 
@@ -13,8 +13,7 @@ export class MenuBarComponent implements OnInit {
   public time;
   public accountName: string;
 
-
-  constructor(private windowSvc: WindowService, private accountSvc: AccountService, private scatterSvc: ScatterService) {}
+  constructor(private appSvc: AppService, private accountSvc: AccountService, private scatterSvc: ScatterService) {}
 
   ngOnInit() {
     this.accountName = 'Anonymous';
@@ -30,7 +29,7 @@ export class MenuBarComponent implements OnInit {
   }
 
   public toogleSideBar() {
-    this.windowSvc.toggleAccountSideBar();
+    this.appSvc.toggleAccountSideBar();
   }
 
   public connectToScatter() {
