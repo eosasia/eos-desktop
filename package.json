@@ -3,6 +3,10 @@
   "version": "1.0.0-alpha.1",
   "main": "electron.js",
   "license": "Apache-2.0",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/errickbensonpeart/eos-desktop"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -12,7 +16,7 @@
     "e2e": "ng e2e",
     "electron": "electron .",
     "electron-build": "ng build --prod && electron .",
-    "mac-build": "sudo electron-packager ./  EOS_Desktop --platform=darwin --arch=x64 --asar --overwrite"
+    "mac-build": "electron-packager ./  EOS_Desktop --platform=darwin --arch=x64 --asar --overwrite"
   },
   "private": true,
   "dependencies": {
