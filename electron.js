@@ -9,9 +9,10 @@ const fs = require('fs');
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
-const userDataPath = app.getPath('userData');
+// const userDataPath = app.getPath('userData');
 // https://github.com/electron/electron/blob/master/docs/api/app.md#appgetpathname
-console.log(userDataPath);
+// https://medium.com/cameron-nokes/how-to-store-user-data-in-electron-3ba6bf66bc1e
+// console.log(userDataPath);
 
 function createWindow () {
   // Create the browser window.
