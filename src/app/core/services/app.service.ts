@@ -41,9 +41,9 @@ export class AppService {
       url: 'http://eosnetworkmonitor.io/'
     },
     {
-      appName: 'EOS Bet',
+      appName: 'EOS Bet - Dice',
       imageName: 'icon-eosbet.png',
-      url: 'https://www.eosbet.io/'
+      url: 'https://dice.eosbet.io/?ref=eosdesktopio'
     },
     {
       appName: 'Coin Market Cap',

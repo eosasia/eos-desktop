@@ -1,5 +1,5 @@
 {
-  "name": "EOS Desktop",
+  "name": "EOS-Desktop",
   "version": "1.0.0-alpha.1",
   "main": "electron.js",
   "license": "Apache-2.0",
