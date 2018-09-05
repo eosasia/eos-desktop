@@ -12,7 +12,9 @@ export class AppComponent implements OnInit {
   public sideBarVisibility = false;
   public windows;
   public shortCutIcons;
-  public objExp = null;
+  public objExp = {
+    'background-image': 'url(' + './assets/images/backgrounds/wallpaper2you_347831.jpg' + ')'
+  };
 
   @ViewChild('desktopWindow') window;
 

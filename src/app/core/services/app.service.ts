@@ -36,19 +36,20 @@ export class AppService {
       url: 'https://eos.feexplorer.io/'
     },
     {
-      appName: 'EOS Network Monitor.io',
-      imageName: 'icons8-nas-40.png',
-      url: 'http://eosnetworkmonitor.io/'
+      appName: 'Coin Market Cap',
+      imageName: 'icon-coinmarketcap.png',
+      url: 'https://coinmarketcap.com'
     },
+    {
+      appName: 'On Chain FX',
+      imageName: 'icons8-web-design-40.png',
+      url: 'https://onchainfx.com/'
+    },
+
     {
       appName: 'EOS Bet - Dice',
       imageName: 'icon-eosbet.png',
       url: 'https://dice.eosbet.io/?ref=eosdesktopio'
-    },
-    {
-      appName: 'Coin Market Cap',
-      imageName: 'icon-coinmarketcap.png',
-      url: 'https://coinmarketcap.com'
     },
     {
       appName: 'Prospectors',
@@ -61,36 +62,26 @@ export class AppService {
       url: 'https://wizards.one/#/'
     },
     {
-      appName: 'Pump and Dump Wars',
-      imageName: 'icon-pump-and-dump.png',
-      url: 'https://game.pumpdumpwars.com/?ref=knightplay11'
-    },
-    {
-      appName: 'On Chain FX',
-      imageName: 'icons8-web-design-40.png',
-      url: 'https://onchainfx.com/'
+      appName: 'EOS Network Monitor.io',
+      imageName: 'icons8-nas-40.png',
+      url: 'http://eosnetworkmonitor.io/'
     },
     {
       appName: 'Backgrounds',
       imageName: 'icons8-monitor-40.png',
       url: 'local'
-    },
-    {
-      appName: 'Settings',
-      imageName: 'icons8-settings-40-1.png',
-      url: 'https://youtube.com/'
     }
   ];
 
   private _windowShortcutApps: object[] = [
     {
       appName: 'Youtube',
-      imageName: 'icons8-globe-40.png',
+      imageName: 'icons8-play-button-48.png',
       url: 'https://youtube.com/'
     },
     {
       appName: 'Reddit EOS',
-      imageName: 'icons8-globe-40.png',
+      imageName: 'icons8-reddit-48.png',
       url: 'https://www.reddit.com/r/eos/'
     },
     {
@@ -99,7 +90,7 @@ export class AppService {
       url: 'https://www.youtube.com/channel/UC6SxkB3kM4uNs_yIU0Lqo_w'
     },
     {
-      appName: 'The Modern Investor | Yotube',
+      appName: 'The Modern Investor | Youtube',
       imageName: 'icons8-globe-40.png',
       url: 'https://www.youtube.com/channel/UC-5HLi3buMzdxjdTdic3Aig'
     },
@@ -120,7 +111,7 @@ export class AppService {
     },
     {
       appName: 'Bloks.io',
-      imageName: 'icons8-globe-40.png',
+      imageName: 'icon-blok.png',
       url: 'https://bloks.io/'
     },
     {

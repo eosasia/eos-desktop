@@ -1,11 +1,13 @@
 {
   "name": "EOS-Desktop",
   "version": "1.0.0-alpha.1",
+  "description": "An intergrated graphic user interface for the EOS Blockchain.",
+  "author": "EOS Desktop <contact@eosdesktop.io>",
   "main": "electron.js",
   "license": "Apache-2.0",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/errickbensonpeart/eos-desktop"
+    "type": "git",
+    "url": "https://github.com/errickbensonpeart/eos-desktop"
   },
   "scripts": {
     "ng": "ng",
@@ -16,7 +18,12 @@
     "e2e": "ng e2e",
     "electron": "electron .",
     "electron-build": "ng build --prod && electron .",
-    "mac-build": "electron-packager ./  EOS_Desktop --platform=darwin --arch=x64 --asar --overwrite"
+    "production-build": "ng build --prod",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "release-windows": "npm run production-build && electron-builder --win",
+    "release-linux": "npm run production-build && electron-builder --linux",
+    "release-mac": "npm run production-build && electron-builder --mac"
   },
   "private": true,
   "dependencies": {
@@ -52,6 +59,8 @@
     "@types/node": "~8.9.4",
     "codelyzer": "~4.2.1",
     "electron": "2.0.8",
+    "electron-builder": "^20.28.3",
+    "electron-installer-dmg": "^2.0.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~1.7.1",
@@ -64,5 +73,59 @@
     "ts-node": "~5.0.1",
     "tslint": "~5.9.1",
     "typescript": "~2.7.2"
+  },
+  "build": {
+    "productName": "EOS Desktop",
+    "appId": "com.eos.desktop.io",
+    "asar": true,
+    "files": [
+      "dist/**/**/*",
+      "electron.js",
+      "package.json"
+    ],
+    "nsis": {
+      "deleteAppDataOnUninstall": true,
+      "allowToChangeInstallationDirectory": true,
+      "oneClick": false,
+      "createDesktopShortcut": "always",
+      "createStartMenuShortcut": true,
+      "shortcutName": "EOS Desktop"
+    },
+    "directories": {
+      "output": "release"
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis"
+        }
+      ]
+    },
+    "linux": {
+      "category": "Blockchain",
+      "desktop": {
+        "Name": "EOS Desktop",
+        "GenericName": "EOS Desktop",
+        "Type": "Application",
+        "Terminal": "false",
+        "StartupNotify": "false",
+        "Categories": "Blockchain"
+      },
+      "target": "AppImage"
+    }
   }
 }
