@@ -26,7 +26,8 @@ Never put your private keys into EOS Desktop, the browser search bar,
 or any site that you navigate to. Use Scatter Desktop to manage access to your account keys/permissions.
 
 ## Releases
-Pre-Alpha Release coming soon....
+[Pre-Alpha Release - 1.0.0.-alpha-1](https://github.com/errickbensonpeart/eos-desktop/releases/tag/1.0.0-alpha.1)
+
 
 ## License and Copyright
  Copyright 2018, Errick Benson Peart
