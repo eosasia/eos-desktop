@@ -1,4 +1,10 @@
 <div appDraggable class="div-block-29" [ngStyle]="{'top': topDistance, 'left':leftDistance}" (dblclick)="openWindow()">
   <img src="assets/images/{{info.imageName}}" class="image-6" width="40" height="40">
   <p>{{info.appName}}</p>
+
 </div>
+<div class="rightClickPanel"[ngStyle]="rightPanelStyle" *ngIf="isContextMenuVisible">
+  My right panel
+</div>
+
+
