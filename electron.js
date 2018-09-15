@@ -7,39 +7,37 @@ const Datastore = require('nedb');
 const User = require('./electron/User');
 const Favorite = require('./electron/Favorite');
 const Shortcut = require('./electron/Shortcut');
+const favoritesApi = require('./electron/favoritesApi');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 let db = {};
 
+// add check for update onload and on every 1 hour
+
 const userDataPath = app.getPath('userData');
-console.log(userDataPath);
 // https://github.com/electron/electron/blob/master/docs/api/app.md#appgetpathname
 // https://medium.com/cameron-nokes/how-to-store-user-data-in-electron-3ba6bf66bc1e
-const User1 = new User();
-const FavoriteIcon = new Favorite('folder', 'icon', 'title', 'www.goggle.com');
-const ShortcutIcon = new Shortcut('folder', 'icon', 'title', 'www.goggle.com');
-User1.favorites = [FavoriteIcon];
-User1.shortcuts = [ShortcutIcon];
 
 const favoritesStoragePath = userDataPath + '/favorites.db';
-const shortcutsStoragePath = userDataPath + '/shortcuts.db';
-db.favorites = new Datastore({ filename: favoritesStoragePath, autoload: true });
-db.shortcuts = new Datastore({ filename: shortcutsStoragePath, autoload: true });
-
-db.favorites.insert(FavoriteIcon, function (err, result) {
- console.log(result);
-});
-
-db.shortcuts.insert(ShortcutIcon, function (err, result) {
-  console.log(result);
-});
+console.log(favoritesStoragePath);
+// const shortcutsStoragePath = userDataPath + '/shortcuts.db';
+// db.favorites = new Datastore({ filename: favoritesStoragePath, autoload: true });
+// db.shortcuts = new Datastore({ filename: shortcutsStoragePath, autoload: true });
+//
+// db.favorites.insert(FavoriteIcon, function (err, result) {
+//  console.log(result);
+// });
+//
+// db.shortcuts.insert(ShortcutIcon, function (err, result) {
+//   console.log(result);
+// });
 
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    title: "EOS Desktop",});
+    title: "EOS Desktop"});
 
   mainWindow.setFullScreen(true);
 
@@ -81,16 +79,56 @@ app.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) {
-    createWindow()
+    createWindow();
   }
 });
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
-ipc.on('get-all-backgrounds', async (event, arg) => {
+ipc.on('get-all-backgrounds', (event, arg) => {
   fs.readdir(path.join(__dirname, 'dist', 'assets', 'images', 'backgrounds'), (err, files) => {
     event.sender.send('get-all-backgrounds', files);
   });
 });
 
+ipc.on('favorite-icon-crud', async (event, arg) => {
+  let result;
+
+  switch(arg.action) {
+    case 'create':
+      result = await favoritesApi.createFavoriteIcon(arg);
+      break;
+    case 'read':
+      result = await favoritesApi.readAllFavoriteIcons(arg);
+      break;
+    case 'update':
+      result = await favoritesApi.updateFavoriteIcon(arg);
+      break;
+    case 'delete':
+      result = await favoritesApi.deleteFavoriteIcon(arg);
+      break;
+  }
+
+  // return result of request
+  event.sender.send('favorite-icon-crud', result);
+
+});
+
+
+// ipc.on('shortcut-icon-crud', async (event, arg) => {
+//   switch(arg.action) {
+//     case 'create':
+//       // favoritesApi.createFavoriteIcon(arg);
+//       break;
+//     case 'read':
+//       // favoritesApi.readAllFavoriteIcons(arg);
+//       break;
+//     case 'update':
+//       // favoritesApi.updateFavoriteIcon(arg);
+//       break;
+//     case 'delete':
+//       // favoritesApi.deleteFavoriteIcon(arg);
+//       break;
+//   }
+// });
