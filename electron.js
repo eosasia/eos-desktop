@@ -4,35 +4,26 @@ const url = require('url');
 const ipc = require('electron').ipcMain;
 const fs = require('fs');
 const Datastore = require('nedb');
-const User = require('./electron/User');
-const Favorite = require('./electron/Favorite');
-const Shortcut = require('./electron/Shortcut');
 const favoritesApi = require('./electron/favoritesApi');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
-let db = {};
+global.db = {};
 
+// TODO
 // add check for update onload and on every 1 hour
 
+// configure local database
 const userDataPath = app.getPath('userData');
+const favoritesStoragePath = userDataPath + '/favorites.db';
+const shortcutsStoragePath = userDataPath + '/shortcuts.db';
+
+global.db.favorites = new Datastore({ filename: favoritesStoragePath, autoload: true });
+global.db.shortcuts = new Datastore({ filename: shortcutsStoragePath, autoload: true });
+// some random useful notes
 // https://github.com/electron/electron/blob/master/docs/api/app.md#appgetpathname
 // https://medium.com/cameron-nokes/how-to-store-user-data-in-electron-3ba6bf66bc1e
-
-const favoritesStoragePath = userDataPath + '/favorites.db';
-console.log(favoritesStoragePath);
-// const shortcutsStoragePath = userDataPath + '/shortcuts.db';
-// db.favorites = new Datastore({ filename: favoritesStoragePath, autoload: true });
-// db.shortcuts = new Datastore({ filename: shortcutsStoragePath, autoload: true });
-//
-// db.favorites.insert(FavoriteIcon, function (err, result) {
-//  console.log(result);
-// });
-//
-// db.shortcuts.insert(ShortcutIcon, function (err, result) {
-//   console.log(result);
-// });
 
 function createWindow () {
   // Create the browser window.
