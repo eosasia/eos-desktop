@@ -34,7 +34,7 @@ function createWindow () {
 
   // and load the index.html of the app.
   const fileLocation = url.format({
-    // TODO move dist folder to elctron/resources folder
+    // TODO move dist folder to electron/resources folder
     pathname:path.join(__dirname, 'dist', 'index.html'),
     protocol:'file:'
   });

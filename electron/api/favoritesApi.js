@@ -28,12 +28,44 @@ module.exports.createFavoriteIcon = function(arg) {
   });
 };
 
-module.exports.readAllFavoriteIcons = function(arg) {
-  console.log('readAllFavoriteIcons');
+module.exports.readAllFavoriteIcons = function() {
+  let result = {};
+
+  return new Promise(function(resolve, reject) {
+    db.favorites.find({}, function (err, documents) {
+      if (err) {
+        result.data = "";
+        result.message = "There was an error during the attempt get your Favorite Icons.";
+        result.status = 500;
+        return reject(result);
+      }
+
+      result.data = documents;
+      result.status = 200;
+      result.message = "Got all Favorite Icons.";
+      return resolve(result);
+    });
+  });
 };
 
 module.exports.updateFavoriteIcon = function(arg) {
-  console.log('updateFavoriteIcon');
+  let result = {};
+
+  return new Promise(function(resolve, reject) {
+    db.favorites.update(arg.searchParam, { $set: arg.updateParam }, { returnUpdatedDocs: true } , function (err, numAffected, affectedDocuments, upsert) {
+      if (err) {
+        result.data = "";
+        result.message = "There was an error during the attempt get your Favorite Icons.";
+        result.status = 500;
+        return reject(result);
+      }
+
+      result.data = affectedDocuments;
+      result.status = 200;
+      result.message = "Updated Favorite Icon";
+      return resolve(result);
+    });
+  });
 };
 
 module.exports.deleteFavoriteIcon = function(arg) {
